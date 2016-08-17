@@ -1,0 +1,9 @@
+pdflatex paper.tex
+bibtex paper
+pdflatex paper.tex
+pdflatex paper.tex
+rm paper.log
+rm paper.blg
+rm paper.bbl
+rm paper.aux
+rm paper.out
