@@ -1,0 +1,238 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{00}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{{\tt DOI:}\penalty0{#1}\ }
+  \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
+
+\bibitem{Becker2015}
+{Martin Becker}, {Philipp Singer}, {Florian Lemmerich}, {Andreas Hotho}, {Denis
+  Helic}, {and} {Markus Strohmaier}. 2015.
+\newblock {\em Photowalking the City: Comparing Hypotheses About Urban Photo
+  Trails on Flickr}.
+\newblock Springer International Publishing, Cham, 227--244.
+\newblock
+\showISBNx{978-3-319-27433-1}
+\showDOI{%
+\url{http://dx.doi.org/10.1007/978-3-319-27433-1_16}}
+
+
+\bibitem{streetviewsequence}
+{Zach Brown}. 2014.
+\newblock Sequencing with Google Street View.
+\newblock
+  \url{http://www.useallfive.com/thoughts/sequencing-with-google-street-view/}.
+    (2014).
+\newblock
+\newblock
+\shownote{[Online; accessed July 17, 2015].}
+
+
+\bibitem{cranshaw2012livehoods}
+{Justin Cranshaw}, {Raz Schwartz}, {Jason~I Hong}, {and} {Norman Sadeh}. 2012.
+\newblock \showarticletitle{The livehoods project: Utilizing social media to
+  understand the dynamics of a city}. In {\em International AAAI Conference on
+  Weblogs and Social Media}. 58.
+\newblock
+
+
+\bibitem{deSilva:2009:RMT:1631272.1631414}
+{Gamhewage~C. de Silva} {and} {Kiyoharu Aizawa}. 2009.
+\newblock \showarticletitle{Retrieving Multimedia Travel Stories Using Location
+  Data and Spatial Queries}. In {\em Proceedings of the 17th ACM International
+  Conference on Multimedia} {\em (MM '09)}. ACM, New York, NY, USA, 785--788.
+\newblock
+\showISBNx{978-1-60558-608-3}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/1631272.1631414}}
+
+
+\bibitem{gamberini2000virtual}
+{Luciano Gamberini}. 2000.
+\newblock \showarticletitle{Virtual reality as a new research tool for the
+  study of human memory}.
+\newblock {\em CyberPsychology \& Behavior\/} {3}, 3 (2000), 337--342.
+\newblock
+
+
+\bibitem{grandmaison2003critical}
+{Eric Grandmaison} {and} {Martine Simard}. 2003.
+\newblock \showarticletitle{A critical review of memory stimulation programs in
+  Alzheimer's disease}.
+\newblock {\em The Journal of neuropsychiatry and clinical neurosciences\/}
+  (2003).
+\newblock
+
+
+\bibitem{horvitz2004learning}
+{Eric Horvitz}, {Susan Dumais}, {and} {Paul Koch}. 2004.
+\newblock \showarticletitle{Learning predictive models of memory landmarks}. In
+  {\em 26th Annual Meeting of the Cognitive Science Society}. 1--6.
+\newblock
+
+
+\bibitem{Joshi:2015:RHC:2809654.2766954}
+{Neel Joshi}, {Wolf Kienzle}, {Mike Toelle}, {Matt Uyttendaele}, {and}
+  {Michael~F. Cohen}. 2015.
+\newblock \showarticletitle{Real-time Hyperlapse Creation via Optimal Frame
+  Selection}.
+\newblock {\em ACM Trans. Graph.\/} {34}, 4, Article 63 (July 2015), 9 pages.
+\newblock
+\showISSN{0730-0301}
+\showDOI{%
+\url{http://dx.doi.org/10.1145/2766954}}
+
+
+\bibitem{laffont2014transient}
+{Pierre-Yves Laffont}, {Zhile Ren}, {Xiaofeng Tao}, {Chao Qian}, {and} {James
+  Hays}. 2014.
+\newblock \showarticletitle{Transient attributes for high-level understanding
+  and editing of outdoor scenes}.
+\newblock {\em ACM Transactions on Graphics (TOG)\/} {33}, 4 (2014), 149.
+\newblock
+
+
+\bibitem{larsen2013qs}
+{Jakob~Eg Larsen}, {Andrea Cuttone}, {and} {Sune~Lehmann J{\o}rgensen}. 2013.
+\newblock \showarticletitle{QS Spiral: Visualizing periodic quantified self
+  data}. In {\em CHI 2013 Workshop on Personal Informatics in the Wild: Hacking
+  Habits for Health \& Happiness}.
+\newblock
+
+
+\bibitem{caman}
+{Ryan LeFevre}. 2015.
+\newblock CamanJS.
+\newblock \url{http://camanjs.com/}.   (2015).
+\newblock
+\newblock
+\shownote{[Online; accessed June 25, 2015].}
+
+
+\bibitem{legge2012building}
+{Eric~LG Legge}, {Christopher~R Madan}, {Enoch~T Ng}, {and} {Jeremy~B Caplan}.
+  2012.
+\newblock \showarticletitle{Building a memory palace in minutes: Equivalent
+  memory performance using virtual versus conventional environments with the
+  Method of Loci}.
+\newblock {\em Acta psychologica\/} {141}, 3 (2012), 380--390.
+\newblock
+
+
+\bibitem{leshed2008car}
+{Gilly Leshed}, {Theresa Velden}, {Oya Rieger}, {Blazej Kot}, {and} {Phoebe
+  Sengers}. 2008.
+\newblock \showarticletitle{In-car gps navigation: engagement with and
+  disengagement from the environment}. In {\em Proceedings of the SIGCHI
+  Conference on Human Factors in Computing Systems}. ACM, 1675--1684.
+\newblock
+
+
+\bibitem{lindqvist2011m}
+{Janne Lindqvist}, {Justin Cranshaw}, {Jason Wiese}, {Jason Hong}, {and} {John
+  Zimmerman}. 2011.
+\newblock \showarticletitle{I'm the mayor of my house: examining why people use
+  foursquare-a social-driven location sharing application}. In {\em Proceedings
+  of the SIGCHI conference on human factors in computing systems}. ACM,
+  2409--2418.
+\newblock
+
+
+\bibitem{neuhaus2010urbandiary}
+{Fabian Neuhaus}. 2010.
+\newblock \showarticletitle{UrbanDiary-A Tracking Project Capturing the beat
+  and rhythm of the city: Using GPS devices to visualise individual and
+  collective routines within Central London.}
+\newblock {\em The Journal of Space Syntax\/} {1}, 2 (2010), 336.
+\newblock
+
+
+\bibitem{googlestories}
+{Anil Sabharwal}. 2014.
+\newblock Google+ Stories Is an Automatic Scrapbook For Your Vacation Photos.
+\newblock
+  \url{https://googleblog.blogspot.com/2014/05/google-stories-and-movies-memories-made.html}.
+    (2014).
+\newblock
+\newblock
+\shownote{[Online; accessed April 11, 2016].}
+
+
+\bibitem{shih2013data}
+{Yichang Shih}, {Sylvain Paris}, {Fr{\'e}do Durand}, {and} {William~T Freeman}.
+  2013.
+\newblock \showarticletitle{Data-driven hallucination of different times of day
+  from a single outdoor photo}.
+\newblock {\em ACM Transactions on Graphics (TOG)\/} {32}, 6 (2013), 200.
+\newblock
+
+
+\bibitem{tang2011understanding}
+{Karen~P Tang}, {Jason~I Hong}, {and} {Daniel~P Siewiorek}. 2011.
+\newblock \showarticletitle{Understanding how visual representations of
+  location feeds affect end-user privacy concerns}. In {\em Proceedings of the
+  13th international conference on Ubiquitous computing}. ACM, 207--216.
+\newblock
+
+
+\bibitem{thudt2013visits}
+{Alice Thudt}, {Dominikus Baur}, {and} {Sheelagh Carpendale}. 2013.
+\newblock \showarticletitle{Visits: A spatiotemporal visualization of location
+  histories}. In {\em Proceedings of the eurographics conference on
+  visualization}.
+\newblock
+
+
+\bibitem{thudt2016visual}
+{Alice Thudt}, {Dominikus Baur}, {Samuel Huron}, {and} {Sheelagh Carpendale}.
+  2016.
+\newblock \showarticletitle{Visual Mementos: Reflecting Memories with Personal
+  Data}.
+\newblock {\em Visualization and Computer Graphics, IEEE Transactions on\/}
+  {22}, 1 (2016), 369--378.
+\newblock
+
+
+\bibitem{van2007mediated}
+{Jos{\'e} Van~Dijck}. 2007.
+\newblock {\em Mediated memories in the digital age}.
+\newblock Stanford University Press.
+\newblock
+
+
+\bibitem{zheng2008learning}
+{Yu Zheng}, {Like Liu}, {Longhao Wang}, {and} {Xing Xie}. 2008.
+\newblock \showarticletitle{Learning transportation mode from raw gps data for
+  geographic applications on the web}. In {\em Proceedings of the 17th
+  international conference on World Wide Web}. ACM, 247--256.
+\newblock
+
+
+\end{thebibliography}
