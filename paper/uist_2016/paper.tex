@@ -196,7 +196,7 @@ If you remember the location, is the photo accurate to your memory? Why or why n
 
 The participant was then shown a Rewind of the trip that they were on when the previous location was encountered. While the Rewind was playing, the participant could hover over the Rewind panel and scrub backwards and forwards horizontally through the images that composed the video. This allowed participants to ``walk through'' their memory at their own pace. The participant was asked the following questions while the Rewind played:
 
-Do you remember these locations? Do you remember this trip? Can  you name some of the streets? Can you name what is around these locations, such as buildings, landmarks, or other places?
+Do you remember these locations? Do you remember this particular trip? Can  you name some of the streets? Can you name what is around these locations, such as buildings, landmarks, or other places?
 
 Would you want to keep this video? Why or why not? Were you traveling alone?
 
@@ -211,22 +211,26 @@ The user study took between 30 minutes to an hour for each participant, and part
 Data from three participants was not included in the results of this study. One of the participants' data points consisted of only one location. The participant used a mobile device provided by the study, so it is likely that they did not carry the device on their person. Another participant did not complete the in-person interview portion of the user study due to health and scheduling reasons. The last participant only collected three days of data because they had their phone replaced during the tracking period, and did not reactivate Google's location reporting services on their new device. This participant completed the in-person interview portion of the user study, but we did not include the data gathered during this participant's session in the results.
 
 \section{Findings}
-The findings of our user study center on the participants' relationship to the Rewinds generated from their location data. We focus on the participants' judgments of their Rewinds' memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, or people who used GPS even in locations already familiar to them.
+The findings of our user study center on the participants' relationship to the Rewinds generated from their location data. We focus on the participants' judgments of their Rewinds' memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, that is people who used GPS even in locations already familiar to them.
 
 \subsection{Memorability}
-Rewinds are meant to engage a person's memory. To see if the Rewind system selected and portrayed memorable locations and trips, we investigated whether participants were able to remember the location shown in a photo or recall the trip portrayed by a Rewind. Location memorability is determined by whether or not the participant remembers the location depicted in a photo. Trip memorability is determined by whether or not the participant remembers and can distinguish the exact trip portrayed in a Rewind. In this section we will look at differences in location and trip remembrance between participants who are regular GPS users and participants who do not use GPS regularly, and examine the effect of location distance and visit frequency on memorability.
+Rewinds are meant to engage a person's memory. To find out more about what features make a digital memory memorable, we examined participant responses to whether or not they were able to remember the location shown in a photo or recall the trip portrayed by a Rewind. Photo memorability is determined by whether or not the participant remembered the location depicted in a photo. Because a Rewind contains many locations, it would be unfair to consider the memorability of Rewind based on whether participant remembers any locations in the Rewind. So, Rewind memorability is determined by whether or not the participant remembered and could distinguish the particular trip portrayed in a Rewind. In this section, we will look at differences in photo and Rewind memorability based on the variables of distance from the participant's home, visit frequency, presence of travel companions, regular GPS usage, and whether the participant considered themselves a frequent traveler.
 
-\subsubsection{Rewinds and Photos}
-When participants were shown a street side photo from their location history, they were asked whether they recognized the location in the photo. In 50\% of cases, participants said they did. When they were shown the Rewind associated with that photo, nearly all participants knew the location captured---97\%. This result shows the impact of Rewind on memorability, as the addition images before and after the static photograph greatly impacts whether a past location is familiar to a user.
+\subsubsection{Rewinds versus Photos}
+When participants were shown a street side photo from their location history, they were asked whether they recognized the location in the photo. In 50\% of cases, participants said they did. When they were shown the Rewind associated with that photo, nearly every case had recognizable locations---97\%. This result is expected since Rewinds contain more location information than static photos, so if participants do not recognize some depicted locations, they still have many other chances to pick out locations they remember. Rewind memorability as calculated by whether participants could identify the particular trip they were on from watching the Rewind was 54\%. However, there were cases where the participant would only remember the photo after seeing its accompanying Rewind, which provided a context. More than one participant exclaimed after watching a Rewind, ``I recognize the photo now!''
 
-\subsubsection{GPS Usage}
-Our findings show that participants who are not regular GPS users remember locations and trips more often than participants who are regular GPS users (Figure~\ref{fig:gpsmemory}). When asked whether they remember the location or trip being shown in a photo or Rewind, participants who do not use GPS regularly gave a positive answer 58\% of the time for location remembrance and 56\% of the time for trip remembrance. Regular GPS users remembered locations 33\% of the time and trips 47\% of the time. The data shows that participants who are regular GPS users did not remember the locations they visited or trips they took as often as participants who are not regular GPS users. Since regular GPS users are frequently directed step-by-step on how to navigate their environment, they may not pay as much attention to their surroundings. This diminished locational awareness could be the reason why regular GPS users had a lower remembrance rate for locations and trips. From these percentages, we also see that regular GPS users remember trips more often than they remember locations, while there is little difference between the two for participants who do not use GPS regularly. 
+\subsubsection{Distance}
+The distance away from the participant’s home had differing effects on photo memorability and Rewind memorability (Figure~\ref{fig:distancememory}). Distances ranged from 0 to 206,155 meters. For analysis, these distances were logarithmically scaled and normalized into six distance groups to mimic human categorization of distances into generalizations like ``close,'' ``far,'' or ``very far.'' When normalized: Group 0 corresponded to a range of 0--10 meters from the participant's home location; Group 1 corresponded to a range of 10--100 meters; Group 2 corresponded to a range of 100--1,000 meters; Group 3 corresponded to a range of 1,000--10,000 meters; Group 4 corresponded to a range of 10,000--100,000 meters and Group 5 corresponded to a range of 100,000--1,000,000 meters from the participant's home location. 
+
+Photo memorability and distance had a clear linear relationship. As the distance increased, photo memorability decreased, suggesting that locations further away from home were less likely to be remembered. Remembrance was 100\% for Distance Group 0, or home. One participant recognized a photo because her ``husband's car is in the driveway.'' Remembrance dropped to 74\% for Distance Group 1, then down to 10\% for Distance Group 5, which represented the locations furthest away from home. These percentages are statistically significant, with a p-value of 0.0028. 
+
+There was no statistical significance for Rewind remembrance. Our data does show, however, that Rewind remembrance was largely the same for most distance groups, except for distances that were close to home. While remembrance for almost all distance groups was on average near 60\%, remembrance for Rewinds in Distance Group 1 was 25\%. This data suggests that participants often did not remember or could not distinguish the exact trips occurring in locations close to their home, where most trips happen.  
 
 \begin{figure}
-   \centering
-     \includegraphics[width=1\linewidth]{GPS_remembrance_2}
-     \caption{Regular GPS users remembered locations 33\% of the time and trips 47\%, compared to 58\% and 56\% for non-regular GPS users.}
-     \label{fig:gpsmemory}
+	\centering
+	\includegraphics[width=1\linewidth]{distance}
+	\caption{Location remembrance is inversely correlated to its distance from a participant's home.}
+	\label{fig:distancememory}
 \end{figure}
 
 \subsubsection{Visit Frequency}
@@ -239,18 +243,23 @@ Location memorability and trip memorability are affected differently by frequenc
      \label{fig:frequencymemory}
 \end{figure}
 
-\subsubsection{Distance}
-The distance away from the participant’s home had differing effects on location memorability and trip memorability (Figure~\ref{fig:distancememory}). Distances ranged from 0 to 206,155 meters. For analysis, these distances were logarithmically scaled and normalized into six distance groups to mimic human categorization of distances into generalizations like ``close,'' ``far,'' or ``very far.'' When normalized: Group 0 corresponded to a range of 0--10 meters from user's home location; Group 1 corresponded to a range of 10--100 meters; Group 2 corresponded to a range of 100--1,000 meters; Group 3 corresponded to a range of 1,000--10,000 meters; Group 4 corresponded to a range of 10,000--100,000 meters and Group 5 corresponded to a range of 100,000--1,000,000 meters from user's home location. As the distance increased, location memorability decreased, suggesting that locations further away from home were less likely to be remembered. Location remembrance dropped from 100\% for Distance Group 0, or home, to 74\% for Distance Group 1 down to 10\% for Distance Group 5, which represented the locations furthest away from home. For trips, remembrance was largely the same for most distance groups, except for distances that were very close to home and distances that were very far, but not the furthest, from home. Trip remembrance was at 60\% for Distance Group 0, then dipped momentarily to 25\% in Distance Group 1 before increasing back up to 60\% for Distance Group 2, 3, and 5. Only Distance Group 4 wavered with a trip remembrance rate of 48\%. This data suggests that participants often did not remember or could not distinguish the exact trips occurring in locations very close to home, where most trips happen, nor could they distinguish the exact trips that happened very far, but not especially far, from home.  
-
-\begin{figure}
-   \centering
-     \includegraphics[width=1\linewidth]{distance}
-     \caption{Location remembrance is inversely correlated to its distance from a participant's home.}
-     \label{fig:distancememory}
-\end{figure}
-
 \subsubsection{Travel Companions}
 Our findings show that trip remembrance is influenced by the presence of travel companions. As one might imagine, trips that were taken with other people were much more memorable than trips taken alone. Participants were not able to remember the exact trip of 33\% of Rewinds taken when they were traveling alone, but they could remember the exact trip of 89\% of Rewinds that were taken with company.
+
+\subsubsection{GPS Usage}
+Our findings show that participants who are not regular GPS users remember locations and trips more often than participants who are regular GPS users (Figure~\ref{fig:gpsmemory}). When asked whether they remember the location or trip being shown in a photo or Rewind, participants who do not use GPS regularly gave a positive answer 58\% of the time for location remembrance and 56\% of the time for trip remembrance. Regular GPS users remembered locations 33\% of the time and trips 47\% of the time. The data shows that participants who are regular GPS users did not remember the locations they visited or trips they took as often as participants who are not regular GPS users. Since regular GPS users are frequently directed step-by-step on how to navigate their environment, they may not pay as much attention to their surroundings. This diminished locational awareness could be the reason why regular GPS users had a lower remembrance rate for locations and trips. From these percentages, we also see that regular GPS users remember trips more often than they remember locations, while there is little difference between the two for participants who do not use GPS regularly. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{GPS_remembrance_2}
+	\caption{Regular GPS users remembered locations 33\% of the time and trips 47\%, compared to 58\% and 56\% for non-regular GPS users.}
+	\label{fig:gpsmemory}
+\end{figure}
+
+\subsubsection{Frequent Travelers}
+Our findings show that trip remembrance is influenced by the presence of travel companions. As one might imagine, trips that were taken with other people were much more memorable than trips taken alone. Participants were not able to remember the exact trip of 33\% of Rewinds taken when they were traveling alone, but they could remember the exact trip of 89\% of Rewinds that were taken with company.
+
+\subsubsection{Other Variables}
 
 \subsection{Believability}
 Rewinds should be believable as memories, and be able to serve as digitally-sourced memories of locations and trips. For that purpose, we define the believability of a Rewind as its accuracy to the participant's memories. Here we will look at how GPS usage and visit frequency affect participants' believability judgments, and discuss the features that participants pointed out as either contributing to or detracting from a Rewind's believability.
