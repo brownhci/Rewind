@@ -175,7 +175,8 @@ For meteorological conditions, a NoSQL database populated by data collected from
 % (Jeff): I think this is an unnecessary detail for this paper
 %For the user study, Rewind displayed one image at a time on the browser, along with an identifier code. The first character in the code is a letter from the group \{R,M,L\}, followed by an integer number. The first character represents the visit frequency of the location shown in the image: R for randomly selected, M for points selected from the most frequently visited locations, and L for points selected from the least frequently visited locations. The integer that follows denotes the distance in meters between a user's home and the given location "as the crow flies." 
 
-
+% heather - perhaps giving this part a new title?
+\subsection{User Interaction}
 Users can click on the images to load the accompanying ``trip'' videos (stitched sequence of images), or Rewinds. The purpose of the Rewinds is to help users remember locations and trips.
 % Note from Jeff: Cut this sentence because I don't understand it. What's a ``corresponding image''?
 % Rewinds are composed of locations visited on the same date as the Rewind's corresponding image.
@@ -189,31 +190,28 @@ In order to account for time of day and season changes,
 Rewind intercepts and manipulate each frame of the trip video, similar to the manipulations applied to the 10 location images. Once all the images within a trip are gathered from Google Street View and processed with CamanJS, users can play Rewinds in a loop, or scrub forward and backward over the video to investigate individual images more closely.
 
 \section{User Study}
-% this needs to be polished
 \subsection{Research Questions}
-% is "digital memory" the right phrase for describing Rewind? Isn't rewind a medium for providing the cues to retrieve exisiting memories rather than creating new memories?
-\textit{Rewind} enables us to ask questions about people's attitudes and behaviors surrounding digital memories that were not possible to answer before due to the scarcity of comprehensive data about where a person has been. To understand what makes a digital memory meaningful to a person, we performed a within-subjects comparison of Rewinds and static photos. By comparing Rewinds to today's most prevalent form of digital memory media, we can distill what features make a Rewind meaningful and representative as a memory of a trip.
+% heather - is "digital memory" the right phrase for describing Rewind? Isn't rewind a medium for providing the cues to retrieve exisiting memories rather than creating new memories?
+The Rewind system enables us to ask questions about people's attitudes and behaviors surrounding digital memories that were not possible to answer before due to the scarcity of comprehensive data about where a person has been. To understand what makes a digital memory meaningful to a person, we performed a within-subjects comparison of Rewinds and static photos. By comparing Rewinds to today's most prevalent form of digital memory media, we can distill what features make a Rewind meaningful and representative as a memory of a trip.
 
-Our research questions examine the effectiveness of \textit{Rewind} videos through three virtues of a memory: memorability, believability, and desirability. %do we need a reference for the three virtues?
+Our research questions examine the effectiveness of \textit{Rewind} videos through three virtues of a memory: memorability, believability, and desirability. % heather - do we need a reference for the three virtues?
 
 
-% best way to put it?
+% heather - I changed this part...
 \begin{enumerate}
-\item Memorability: How would \textit{Rewind} facilitate the retrival of episodic memory? What types of users are most likely to recall their memories using \textit{Rewind}?
+\item Memorability: How would \textit{Rewind} facilitate with the retrival of episodic memory? What types of users are most likely to recall their memories using \textit{Rewind}?
 \item Believability:  How accurate are \textit{Rewind} artifacts in the eyes of the users' ? 
 \item Desirability: What factors are inherent to users' decisions in preserving artifacts created by \textit{Rewind}?
 \end{enumerate}
 
-% where to put this part or do we need a summary like this at all?
+% heather - where to put this part or do we need a summary like this at all?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Our user study explored the following five metrics that could potentially influence the aforesaid three measurements of \textit{Rewind} vidoes. These five metrics are:
-\begin{enumerate}
-\item GPS usage: how self-identified regular GPS users and non-regular GPS users differ in their responses to \textit{Rewind} videos.
-\item Traveler type: how self-identified frequent travelers and non-frequent travelers report to the three measurements of \textit{Rewind} videos differently.
-\item Companions: how traveling companionship and solitude affect users' viewpoints on \textit{Rewind} videos.
-\item Distance: how traveling distances affect users' perceptions of \textit{Rewind} videos.
-\item Visit frequency: how visit frequency of a particular place influence users' reporting on \textit{Rewind} videos.
-\end{enumerate}
+\item GPS usage: how self-identified regular GPS users and non-regular GPS users differ in their responses to \textit{Rewind} vidoes.
+\item Traveller type: how self-identified frequent travellers and non-frequent travellers report to the three measurements of \textit{Rewind} vidoes differently.
+\item Companions: how travelling companionship and solitude affect users' viewpoints on \textit{Rewind} vidoes.
+\item Distance: how travelling distances affect users' perceptions of \textit{Rewind} vidoes.
+\item Visit frequency: how visit frequency of a particular place influence users' reporting on \textit{Rewind} vidoes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Participants}
@@ -234,20 +232,18 @@ Then, questions about the photos and Rewinds investigated their memorability, be
 %Participants who used GPS in familiar locations were considered regular GPS users, and participants who did not were considered non-regular GPS users.
 For each photo-Rewind pair, the participant was first shown a photo of one of the locations found in their geolocation data. The participant was asked to answer the following questions about the photo: Do you remember this location? If so, can you name the street? Can you name what is around the location, such as buildings, landmarks, or other places? Would you want to keep this photo? Why or why not? Were you traveling alone? If you remember the location, is the photo accurate to your memory? Why or why not? What was different?
 
-% Rewind of the trip or Rewind video of the trip?
+% heather - Rewind of the trip or Rewind video of the trip?
 The participant was then shown a Rewind of the trip that they were on when the previous location was encountered. While the Rewind was playing, the participant could hover over the Rewind panel and scrub backwards and forwards horizontally through the images that composed the video. This allowed participants to ``walk through'' their memory at their own pace. The participant was asked the following questions while the Rewind played: Do you remember these locations? Do you remember this particular trip? Can  you name some of the streets? Can you name what is around these locations, such as buildings, landmarks, or other places? Would you want to keep this video? Why or why not? Were you traveling alone? If you remember these locations, is the video accurate to your memory? Why or why not? What was different?
 
 In addition to asking questions, we observed the users as they examined their generated Rewinds, since they could passively watch the Rewind or actively scrub through the individual images that made up the Rewind. The user study took between 30 minutes to an hour for each participant, and participants were compensated \$30 for their time at the end of the study.
 
-% ...that they did not carry the device on their person. - grammatical error?
+% heather - ...that they did not carry the device on their person. - grammatical error?
 Data from three participants was not included in the results of this study. One of the participants' data points consisted of only one location. The participant used a mobile device provided by the study, so it is likely that they did not carry the device on their person. Another participant did not complete the in-person interview portion of the user study due to health and scheduling reasons. The last participant only collected three days of data because they had their phone replaced during the tracking period, and did not reactivate Google's location reporting services on their new device. This participant completed the in-person interview portion of the user study, but we did not include the data gathered during this participant's session in the results.
 
 
-% need to be rephrased.
+% heather - need to be rephrased perhaps? Should we give a high level summary of all the relationships we've found? More analysis to be done for photo vs. videos, another table?
 \section{Findings}
-Our user study explored five metrics that could potentially affect participants' memorability, belivability, and desirability of \textit{Rewind} vidoes. These five metrics are:
-
-participants' relationship to \textit{Rewind} videos generated from their location data. We focus on the participants' judgments of their Rewinds' memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, that is people who used GPS even in locations already familiar to them.
+The findings of our user study center on the participants’ relationship to the Rewinds generated from their location data. We focus on the participants’ judgments of their Rewinds’ memorability, believability, and desirability in comparison to their judgments of the photos paired with paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, that is people who used GPS even in locations already familiar to them.
 
 \begin{table*}[t]
 	\centering
@@ -285,7 +281,7 @@ participants' relationship to \textit{Rewind} videos generated from their locati
 \subsection{Memorability}
 Rewinds are meant to engage a person's memory. To find out more about what features make a digital memory memorable, we examined participant responses to whether or not they were able to remember the location shown in a photo or recall the trip portrayed by a Rewind. Photo memorability is determined by whether or not the participant remembered the location depicted in a photo. Because a Rewind contains many locations, it would be unfair to consider the memorability of Rewind based on whether participant remembers any locations in the Rewind. So, Rewind memorability is determined by whether or not the participant remembered and could distinguish the particular trip portrayed in a Rewind. In this section, we will look at differences in photo and Rewind memorability based on the variables of distance from the participant's home, visit frequency, presence of travel companions, regular GPS usage, and whether the participant considered themselves a frequent traveler.
 
-% didn't do the stats for video location vs photo locations, not sure if it is necessary?
+% heather - didn't do the stats for video location vs photo locations, not sure if it is necessary? - photo vs video stats?
 \subsubsection{Rewinds versus Photos}
 When participants were shown a street side photo from their location history, they were asked whether they recognized the location in the photo. In 50\% of cases, participants said they did. When they were shown the Rewind associated with that photo, nearly every case had recognizable locations---97\%. This result is expected since Rewinds contain more location information than static photos, so if participants do not recognize some depicted locations, they still have many other chances to pick out locations they remember. Rewind memorability as calculated by whether participants could identify the particular trip they were on from watching the Rewind was 54\%. However, there were cases where the participant would only remember the photo after seeing its accompanying Rewind, which provided a context. More than one participant exclaimed after watching a Rewind, ``I recognize the photo now!''
 
