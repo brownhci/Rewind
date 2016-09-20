@@ -59,8 +59,10 @@
 
 \maketitle
 
+
+% heather - add more results in here since we have more to report. Probably cut down image manipulation?
 \begin{abstract}
-We introduce \textit{Rewind}, a system that assists in the recall of episodic memory by automatically recreating interactive sceneries of past trips. \textit{Rewind} uses historical geolocation data to generate egocentric videos of earlier experiences from publicly-available street side images. Since the effectiveness of memory cues is determined by their level of integration with the target memory, the images are manipulated to incorporate time-of-day, seasonal and weather information, thereby creating more faithful representation of the original experience. Users can interactively go back and forth in time by scrubbing over the video. Together, the composed \textit{Rewind} videos offer users a window into past travels. We report the results of a user study with eighteen participants conducted to collect location data over two weeks. Trips taken in groups were more likely to be recalled using \textit{Rewind} videos than trips taken alone. \textit{Rewind} also serves as an experiment of the extreme scenario where users can freely roam and experience the world, keeping their mobile devices in their pockets, and still preserve believable representations that capture the past.
+We introduce \textit{Rewind}, a system that assists in the recall of semantic and episodic memory by automatically recreating interactive sceneries of past trips. \textit{Rewind} uses historical geolocation data to generate egocentric videos of earlier experiences from publicly-available street side images. Since the effectiveness of memory cues is determined by their level of integration with the target memory, images used in \textit{Rewind} are manipulated to incorporate time-of-day, seasonal and weather information, thereby creating more faithful representation of the original experience. Users can interactively go back and forth in time by scrubbing over the video. Together, the composed \textit{Rewind} videos offer users a window into past travels. We report the results of a user study with eighteen participants conducted to collect location data over two weeks. Trips taken in groups were more likely to be recalled using \textit{Rewind} videos than trips taken alone. \textit{Rewind} also serves as an experiment of the extreme scenario where users can freely roam and experience the world, keeping their mobile devices in their pockets, and still preserve believable representations that capture the past.
 \end{abstract}
 
 \keywords{
@@ -145,6 +147,7 @@ Finally, as location reveals where a person was at certain times, and is often a
 %      \label{fig:flowchart}
 % \end{figure}
 
+% heather - add determination of home?
 \subsection{Route Selection}
 A user's geolocation tracking data includes latitude and longitude coordinates, and timestamps of when the user was at given coordinates. \textit{Rewind} expects JSON formatted data, and is also compatible with other location-based formats such as GPX. Rewind generates location points for the user, using smart filtering based on visit frequencies to decrease the data noise and diversify the locations shown to the user.
 
@@ -257,20 +260,38 @@ Data from three participants was not included in the results of this study. One 
 
 % heather - need to be rephrased perhaps? Should we give a high level summary of all the relationships we've found? More analysis to be done for photo vs. videos, another table?
 % semantic vs episodic memory
+% mention distance categories in the beginning (up up up) + everything else 
 \section{Findings}
-upper-bound estimates of event-related memories. 
 The findings of our user study center on the participants’ relationship to the Rewinds generated from their location data. We focus on the participants’ judgments of their Rewinds’ memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, that is people who used GPS even in locations already familiar to them.
 
 \subsection{Within-subject study}
-\subsubsection{Memorability}
-Within-subject comparison in our study reveals that participants are significantly better at recalling semantic memory of a particular location with \textit{Rewind} videos than with static street-view images, $\chi^2(1, 356) = 96.987$, $p < 0.01$. When being presented with a street-side image retrieved based on their location data, participants were able to recognize places visited 50\% of the time; yet recognition rate of locations reached 97\% when participants started playing accompanied \textit{Rewind} video, with a significant increase of 47\%. It is perhaps not too surprising as cinematic media like \textit{Rewind} video would provide users with more contextual meanings and retrival cues for semantic processing, as more than one participant have expressed their contentment after wathing \textit{Rewind} videos by claiming ``I recognize the photo now!'' when their initial attempts with static images were fruitless. 
+\subsubsection{Semantic Memory} 
+Within-subject comparison in our study reveals that participants are significantly better at recalling semantic memory of a particular location with \textit{Rewind} videos than with static street-view images, $\chi^2(1, N=356) = 96.987$, $p <.01$. When being presented with a street-side image retrieved based on their location data, participants were able to recognize places visited 50\% of the time; yet recognition rate of locations reached 97\% when participants started playing accompanied \textit{Rewind} video, with a significant increase of 47\%. It is perhaps not too surprising as cinematic media like \textit{Rewind} video would provide users with more contextual meanings and retrival cues for semantic processing, as three participants (P4, P6 and P10) have once expressed their contentment after watching \textit{Rewind} videos by claiming ``I recognize the photo now!'' when their initial attempts with static images recognition were fruitless. 
 
-It could possibly be inferred that participants are likely to benefit more from \textit{Rewind} videos than static street-view images at recalling episodic memory. Although participants were not explicitly asked about trip rememberance when presented with static images, location rememberance from static images may serve as an upper-bound estimation of how much an individual could recall about a particular trip. - tbc
+%
+\subsubsection{Episodic Memory}
+It could possibly be inferred that participants are likely to benefit more from \textit{Rewind} videos than static street-view images at recalling episodic memory. Although participants were not explicitly asked about trip rememberance when presented with static images as opposed to what they were asked after watchiing \textit{Rewind} videos, location rememberance from static images may serve as an upper-bound estimation of how much an individual could recall about a particular trip; since if participants fail to form any cognitive association with the locations depicted in the images, it is very unlikely that they would be able to associate target itineraries with the locations shown. Thus, it is perhaps safe to presume that location rememberance with images bounds above the maximum likelihood of trip rememberance with the same images presented to the participants, and we used location rememberance from image recognition as an upper-limit gauge against trip rememberance from \textit{Rewind} videos thereafter.
+
+% h - add another table, only abt memorability tho
+% explain distance groups in the beginning
+% where is home? need to explain this part in system?
+Using the aforementioned presumption, our study examined effects of \textit{Rewind} videos on episodic processing in metric-specific groups, as well as the performance overall. Our study shows that comparing to static street-view images, recollection of event-driven memories using \textit{Rewind} videos is significantly improved for trips taken that were 100 - 1,000 km (62 - 620 miles) away from home by 50\%, $\chi^2(1, N=20) = 3.215$, $p <.05$; and for trips that were least frequently taken by about 20\%, $\chi^2(1, N=161) = 5.977$, $p <.01$. Our study also suggested that GPS users would benefit more from \textit{Rewind}, even though the difference was mildly significant by an increase about 15\%, $\chi^2(1, N=118) = 2.145$, $p = .0715 (<.1)$. 
+% h - prob explain this a little bit more
+
+One plausible explanation of the improvement may be inherent to the encoding of episodic memory in the first place. As suggested by the levels-of-processing theory(ref), encoding efficacy is heavily dependent on the levels to which stimuli are being actively or passively processed. Not surprisingly, superficial mental engagement would produce weaker, and less enduring cognitive representation which would demand more contextually accurate and abundant cues for memory triggery, and vice versa. Oftentimes, the cognitive representation resulted from shallow processing may not even be retrievable at all as it is simply not available for retrieval.  As previously described, both of the trips revealed in our results, those that were taken farthest away from home and those that were least frequently taken, may not be special enough to engage deep memory encoding nor often enough to reinforce incidental remembrance. This means that it would be more difficult for participants to recall these trips if the provided cues are not effective enough. Since \textit{Rewind} videos provide richer and more contextually meaningful cues than static street-side images, it is reasonable that \textit{Rewind} significantly outperforms plain images as suggested by our statistical analysis. While being asked about location and trip rememberance on one of his least frequently taken route, P7 was not able to identify the location from the static image; yet he recognized the trip from \textit{Rewind} video as ``one street (in the video) helps me (him) remember". 
+
+
+
+It may appear to be puzzling that participants seem to recall less about specifics of their trips from \textit{Rewind} videos compared to static images when they traveled alone, with a significant decrease around 40\%, $\chi^2(1, N=168) = 33.831$, $p <.01$; when the trips were most frequently taken, with a significant decrease of 20\%, $\chi^2(1, N=161) = 5.977$, $p <.01$; and when the trips taken were 10 - 100 meters (33 - 328 feet) away from home, with a mildly significant decrease of 50\%, $\chi^2(1, N=16) = 2.25$, $p <.1$. 
+
 \subsubsection{Belivability and Desirability}
 Although not statistically significant, 
 
 \subsection{Between-subject study}
 
+
+%%UPDATE BOTH TABLES AND ADD ONE MORE%%%
+%%%%%%%%%%%percentage to decimal
 \begin{table*}[t]
 	\centering
 	\caption{My caption}
