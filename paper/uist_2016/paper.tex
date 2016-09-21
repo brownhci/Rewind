@@ -105,7 +105,7 @@ The two main contributions of our work are: 1) the design and implementation of 
 % heather - trips vs locations -> (define) semantic memory vs episodic memory - check references, relate to some work done by SenseCam perhaps?
 % cut down GPS usage
 \subsection{Digital Memories}
-Rewind is guided by literature about mediated memories, which provides a theoretical underpinning behind how the Rewind experience is constructed. \textit{Mediated Memories in the Digital Age} offers inspiration informing the relationship between experiences and memories \cite{van2007mediated}. van Dijck notes, ``Remembering is vital to our well being, because without autobiographical memories we would have no sense of past or future, and we would lack any sense of continuity'' (pg. 3). Rewind aims to give the user this sense of continuity in a time segment which has a past and future. By picking a start and end location from a particular trip and generating a Rewind between these points, the user relives their memories in a continuous manner. Similarly in his seminal paper \textit{As we may think}, Vannevar Bush described \textit{memex}, the envisioned machinery to store infinite information and to allow free, collective access through``associative trails'', giving mankind the ability of``...forgetting the manifold things he does not need to have immediately at hand, with some assurance that he can find them again if they prove important''. Rewind in its most ambitious form, perhaps strives to become a potential counterpart of \textit{memex} for retrieving, and sharing of autobiographical memories of one\’s sensory experiences about past visits.
+Rewind is guided by literature about mediated memories, which provides a theoretical underpinning behind how the Rewind experience is constructed. \textit{Mediated Memories in the Digital Age} offers inspiration informing the relationship between experiences and memories \cite{van2007mediated}. van Dijck notes, ``Remembering is vital to our well being, because without autobiographical memories we would have no sense of past or future, and we would lack any sense of continuity'' (pg. 3). Rewind aims to give the user this sense of continuity in a time segment which has a past and future. By picking a start and end location from a particular trip and generating a Rewind between these points, the user relives their memories in a continuous manner. Similarly in his seminal paper \textit{As we may think}, Vannevar Bush described \textit{memex}, the envisioned machinery to store infinite information and to allow free, collective access through ``associative trails'', giving mankind the ability of ``...forgetting the manifold things he does not need to have immediately at hand, with some assurance that he can find them again if they prove important''. Rewind in its most ambitious form, perhaps strives to become a potential counterpart of \textit{memex} for retrieving, and sharing of autobiographical memories of one's sensory experiences about past visits.
 
 van Dijck also states that ``Our memories organize themselves according to our actual or perceived participation in a (temporal) collectivity---a group vacation, a school class, a family, a generation---and recall tends to lean on a sense of belonging or sharing rather than on a relocation in real time or space'' (pg. 9). Relating to the concept of organization, our user study explores whether traveling alone or with others affects the remembrance and the value of a past trip. 
 
@@ -249,9 +249,13 @@ Data from three participants were not included in the results of this study. One
 % semantic vs episodic memory
 % mention distance categories in the beginning (up up up) + everything else 
 \section{Findings}
-The findings of our user study center on the participants’ relationships to the Rewinds generated from their location data compared to the static photos. We focus on the participants’ judgments of their Rewinds’ memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds. We also discuss the participants' interactions with and reactions to their Rewinds. The results use data from the user studies conducted with 12 men and 6 women. Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, which we defined as people who use GPS navigation even in locations already familiar to them. We used Chi-squared one-tail test for significance analysis.
+The findings of our user study center on the participants' relationships to the Rewinds generated from their location data compared to the static photos. We focus on the participants' judgments of their Rewinds' memorability, believability, and desirability in comparison to their judgments of the photos paired with the Rewinds (Table \ref{table:Rewindvsphotos}).
+%We also discuss the participants' interactions with and reactions to their Rewinds.
+The results use data from the user studies conducted with 12 men and 6 women. Half identified themselves as frequent travelers, and half said they were regular GPS users, which we defined as people who use GPS navigation even in locations already familiar to them.
+%Half of the participants identified themselves as frequent travelers. Additionally, half of the participants were regular GPS users, which we defined as people who use GPS navigation even in locations already familiar to them.
+%We used Chi-squared one-tail test for significance analysis.
 
-Our user study explored the following five factors as potentially having an effect on memorability, believability, or desirability of digital memory media.
+Besides a comparison between Rewinds and photos, our user study explored the following five factors as potentially having an effect on memorability, believability, or desirability of digital memory media (Table \ref{table:betweensubjects}).
 \begin{enumerate}
 	\item Distance: how does the location's distance away from the participant's home influence the participant's perception of Rewinds and static photos? Distances ranged from 0 to 206,155 meters. For analysis, these distances were logarithmically scaled and normalized into six distance groups to mimic human categorization of distances into generalizations like ``close,'' ``far,'' or ``very far.'' When normalized: Group 0 corresponded to a range of 0--10 meters from the participant's home location; Group 1 was 10--100 meters; Group 2 was 100--1,000 meters; Group 3 was 1,000--10,000 meters; Group 4 was 10,000--100,000 meters and Group 5 was 100,000--1,000,000 meters from the participant's home location.  
 	\item Visit frequency: do participants react differently to Rewinds and static photos depicting locations they visit frequently compared to locations they rarely visit? We showed locations that were either ``most frequently visited,'' ``least frequently visited,'' or randomly selected.
@@ -274,6 +278,7 @@ Our user study explored the following five factors as potentially having an effe
 		\multicolumn{1}{|c|}{\%} & 0.97 & \multicolumn{2}{c|}{0.50} & 0.54 & 0.78 & 0.80 & 0.11 & 0.15 \\ \hline
 		\multicolumn{1}{|c|}{p-val} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}$\chi^2(1, 356) = 96.987$\\ p = 0.0001\end{tabular}} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}$\chi^2(1, 356) = 0.41$\\ p = 0.2611\end{tabular}} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}$\chi^2(1, 214) = 0.02$\\ p = 0.4434\end{tabular}} & \multicolumn{2}{c|}{\begin{tabular}[c]{@{}c@{}}$\chi^2(1, 356 ) = 0.995$\\ p = 0.1593\end{tabular}} \\ \hline
 	\end{tabular}
+\label{table:Rewindvsphotos}
 \end{table*}
 
 % 2nd table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,11 +315,11 @@ Our user study explored the following five factors as potentially having an effe
 \label{table:betweensubjects}
 \end{table*}
 
-\section{Memorability}
-Rewinds, and digitally-mediated memories in general, are meant to engage a person's memory. To find out what features make a digital memory memorable, we examined participant responses to whether or not they were able to remember the location shown in a photo or recall the trip portrayed by a Rewind. Photo memorability is determined by whether or not the participant remembered the location depicted in a photo. Because a Rewind contains many locations, it would be unfair to evaluate the memorability of Rewind based on whether the participant remembers any locations in the Rewind. If participants do not recognize some depicted locations, they still have many other chances to pick out locations they remember. So, Rewind memorability is determined by whether or not the participant remembered and could distinguish the particular trip portrayed in a Rewind. In this section, we will look at differences in photo and Rewind memorability based on the five metrics discussed previously.
+\subsection{Memorability}
+Rewinds, and digitally-mediated memories in general, are meant to engage a person's memory. To identify what features make a digital memory memorable, we examined participant responses to whether or not they were able to remember the location shown in a photo or recall the trip portrayed by a Rewind. Photo memorability is determined by whether or not the participant remembered the location depicted in a photo. Because a Rewind contains many locations, it would be unfair to evaluate the memorability of Rewind based on whether the participant remembers any locations in the Rewind. If participants do not recognize some depicted locations, they still have many other chances to pick out locations they remember. So, Rewind memorability is determined by whether or not the participant remembered and could distinguish the particular trip portrayed in a Rewind. In this section, we will look at differences in photo and Rewind memorability based on the five metrics discussed previously.
 
 % h - deleted participants # for consistencies - P4, P6 and P10 for future reference
-\subsubsection{Rewinds vs. Static Photos} 
+%\subsubsection{Rewinds vs. Static Photos} 
 Our study reveals that participants have higher semantic memory of locations when presented with Rewinds than with static street-view photos ($\chi^2(1, N=356) = 96.987$, $p <.01$). When presented with a street-view photo generated from the participant's location data, participants were able to recognize the depicted location 49.7\% of the time. Recognition rate of locations reached 96.6\% when participants were shown the accompanying Rewind. As discussed above, this can be expected because cinematic media like Rewinds provide more context and retrieval cues. Three participants (P4, P6, and P10) who were unable to recall a location from a static photo actually recognized the location after seeing the accompanying Rewind. They expressed their contentment after watching the Rewind, proclaiming ``I recognize the photo now!'' Further differences between Rewinds and static photos are discussed in the following sections.
 %TODO h - add another table, only abt memorability tho
 
@@ -322,15 +327,15 @@ Our study reveals that participants have higher semantic memory of locations whe
 %TODO  where is home? need to explain this part in system? make sure this is explained
 % only affect location rememberance
 % 0 - 100%, 1 - 75%, 2 - 72%, 3 - 44%, 4 - 52%, 5 - 10%, $\chi^2(5,179) = 18.106$, p < 0.01
-The depicted location's distance away from the participant’s home had differing effects on photo memorability and Rewind memorability. Photo memorability and distance had a clearly linear relationship, while the relationship between Rewind memorability and distance was more nuanced. 
+The depicted location's distance away from the participant's home had differing effects on photo memorability and Rewind memorability. Photo memorability and distance had a clearly linear relationship, while the relationship between Rewind memorability and distance was more nuanced. 
 
-For photos, as the distance increased, memorability decreased, suggesting that locations further away from home were less likely to be remembered. In Distance Group 0, or the participant's home location, location recall was 100\%. One participant, upon recognition, explained that she knew the location because ``my husband's car is in the driveway.'' Further away in Distance Group 1, remembrance dropped to 75\%, then later down to 10\% for Distance Group 5, which represented the locations furthest away from home. These percentages are statistically significant, with a p-value of 0.0028. 
+For photos, as the distance increased, memorability decreased, suggesting that locations further away from home were less likely to be remembered. In Distance Group 0, or the participant's home location, location recall was 100\%. One participant, upon recognition, explained that she knew the location because ``my husband's car is in the driveway.'' Further away in Distance Group 1, remembrance dropped to 75\%, then later down to 10\% for Distance Group 5, which represented the locations furthest away from home. These percentages are statistically significant ($p < 0.01$).%, with a p-value of 0.0028. 
 
 %TODO find citation that humans travel most within x km of their home/work nodes
 %TODO memory competition--similar memories compete for significance
 For Rewind memorability, there was no statistical significance. Our data does show, however, that Rewind remembrance was largely the same for most distance groups, except for distances that were close to home in Distance Group 1. While remembrance for all distance groups was between 50--60\%, remembrance for Rewinds in Distance Group 1 was 25\%. This data suggests that participants often did not remember or could not distinguish the exact trips that occurred in locations close to their home. This is where most trips happen, and therefore competition between similar memories would make it harder for a person to distinguish the specific trip they were on that generated the Rewind.
 
-When comparing photo memorability and Rewind memorability based on distance, our study shows that for trips close to home (Distance Group 1), photo remembrance was higher by 50\%, $\chi^2(1, 16) = 2.25$, $p = 0.067$. For trips far from home (Distance Group 5), Rewind remembrance was higher by 50\%, $\chi^2(1, 20) = 3.516$, $p < 0.05$. This suggests that the suitability of photos or Rewinds as memory media may differ depending on how far away from home a person is when they want to document a location. %TODO expand on this in discussion
+When comparing photo and Rewind memorability based on distance, our study shows that for trips close to home (Distance Group 1), photo remembrance was higher by 50\%, $\chi^2(1, 16) = 2.25$, $p = 0.067$. For trips far from home (Distance Group 5), Rewind remembrance was higher by 50\%, $\chi^2(1, 20) = 3.516$, $p < 0.05$. This suggests that the suitability of photos or Rewinds as memory media may differ depending on how far away from home a person is when they want to document a location. %TODO expand on this in discussion
 
 \subsubsection{Visit Frequency}
 % only affect location rememberance
@@ -338,7 +343,7 @@ When comparing photo memorability and Rewind memorability based on distance, our
 % most frequently visited - 72%, least frequently visited - 36%, $\chi^2(1,128) = 14.458$, p < 0.01
 Differences in photo memorability due to visit frequency were statistically significant, while differences in location memorability were not. Photo memorability is higher for locations that are most frequently visited by the participant, with a remembrance rate of 72.3\%. Photo remembrance rate for the least frequently visited locations is 35.8\%. This is statistically significant at $\chi^2(1,128) = 14.458$, $p < 0.01$. 
 
-Between photos and Rewinds, photos had a higher remembrance rate for most frequently visited locations, with a difference of 20.2\% $\chi^2(1, N=20) = 3.215$, $p <.05$; and for least frequently visited locations Rewinds had a higher remembrance rate with a difference of 20.5\%, $\chi^2(1, N=161) = 5.977$, $p <.01$, suggesting again that photos and Rewinds may have different suitabilities as memory media.
+Between photos and Rewinds, users were most likely to remember photos for most frequently visited locations, with a difference of 20.2\% $\chi^2(1, N=20) = 3.215$, $p <.05$; and for least frequently visited locations Rewinds had a higher remembrance rate with a difference of 20.5\%, $\chi^2(1, N=161) = 5.977$, $p <.01$, suggesting again that photos and Rewinds may have different suitabilities as memory media.
 
 \subsubsection{GPS Usage}
 Our study also suggested that GPS users would benefit more from Rewinds, even though the difference was mildly significant by an increase about 15\%, $\chi^2(1, N=118) = 2.145$, $p =.0715 (<.1)$. 
@@ -361,7 +366,7 @@ Although location rememberance is slightly higher for frequent traveler (51\% fo
 % trip accompanies have siginificant effects on both location and trip rememberance. 
 % location rememberance: travel alone -  100%, not alone - 55%, $\chi^2(1,94) = 31.812$, p < 0.01
 % trip rememberance: travel alone - 62%, not alone - 90%, $\chi^2(1,133) = 9.016$, p < 0.01
-Our study shows that both location and trip remembrances are influenced by the presence of travel companions, yet in a opposite way. For location rememberance, participants who believed that they traveled alone reported 100\% successful recalls of locations compare to 55\% rate reported by participants who believed that they traveled in groups, with $\chi^2(1, N=94) = 31.812$, $p <.00001$. On the other hand, trip details tend to be more easily remembered during accompanied visits as one participant recalled ``I remembered my friend and i walked a certain way -- don't usually take this route". Participants who believed that they traveled alone were able to remember the exact trip 62\% of the time from watching Rewinds, yet those who believed that they traveled with companions could remember the exact trip 90\% of the time, with $\chi^2(1, N=133) = 9.016$, $p <.01)$.
+Our study shows that both location and trip remembrances are influenced by the presence of travel companions, yet in a opposite way. For location rememberance, participants who believed that they traveled alone reported 100\% successful recalls of locations compared to 55\% reported by participants who believed that they traveled in groups, with $\chi^2(1, N=94) = 31.812$, $p <.00001$. On the other hand, trip details tend to be more easily remembered during accompanied visits as one participant recalled ``I remembered my friend and I walked a certain way -- don't usually take this route". Participants who believed that they traveled alone were able to remember the exact trip 62\% of the time from watching Rewinds, yet those who believed that they traveled with companions could remember the exact trip 90\% of the time, with $\chi^2(1, N=133) = 9.016$, $p <.01)$.
 
 % \begin{figure}
 % 	\centering
@@ -386,17 +391,24 @@ Our study shows that both location and trip remembrances are influenced by the p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Believability}
-Rewinds should be believable as memories, and be able to serve as digitally-sourced memories of locations and trips. For that purpose, we define the believability of a Rewind as its accuracy to the participant's memories. Here we will look at how GPS usage and visit frequency affect participants' believability judgments, and discuss the features that participants pointed out as either contributing to or detracting from a Rewind's believability.
+%Rewinds should be believable as memories, and be able to serve as digitally-sourced memories of locations and trips. For that purpose,
+We define the believability of a Rewind as its accuracy to the participant's memories.
+Overall, users were more likely to believe a Rewind was part of their memory (80\% to 78\%), but this was not statistically significnat.
+Here we will look at how GPS usage and visit frequency affect participants' believability judgments, and discuss the features that participants pointed out as either contributing to or detracting from a Rewind's believability.
 
 \subsubsection{GPS Usage}
 % no significant effects on location belivability $\chi^2(1,86) = 0.666$, p = 0.2073(> 0.05)
 % signifant effects on trip belivability $\chi^2(1,128) = 2.917$, p = 0.0483(< 0.05)
 % GPS - 69%, non-GPS - 81%
-Our results show that participants who were non-regular GPS users found photos and Rewinds to be accurate to their memory more often than regular GPS users did in terms of percentage. Differences in Rewinds believability is statistically significant $\chi^2(1, N=128) = 2.917$, $p <.05$). Photos and Rewinds could only be considered accurate to a participant's memory if the participant first confirmed that they remembered the locations in them. The results in this section reflect percentages from a total pool of only photos and Rewinds that have remembered locations. Regular GPS users found 65\% of photos and 45\% of Rewinds accurate to their memory out of the photos and Rewinds in which they remembered the locations. Participants who did not regularly use GPS found 78\% of photos and 63\% of Rewinds accurate to their memory. So far, our findings show that regular GPS users remembered the locations in their digital memories less often, and from the locations they did remember, they were less likely to find a photo or Rewind accurate to their memory. One participant who identified as a regular GPS user said, ``I really don't pay attention to my surroundings when I'm driving. I'm focused on the GPS and the road,'' when asked about the accuracy of a trip.
+When splitting users between GPS users and non-GPS users, participants who were non-regular GPS users found photos and Rewinds to be accurate to their memory more often than regular GPS users did in terms of percentage ($\chi^2(1, N=128) = 2.917$, $p <.05$). Photos and Rewinds could only be considered accurate to a participant's memory if the participant first confirmed that they remembered the locations in them.
+% The results in this section reflect percentages from a total pool of only photos and Rewinds that have remembered locations.
+Regular GPS users found 65\% of photos and 45\% of Rewinds accurate to their memory out of the photos and Rewinds in which they remembered the locations. Participants who did not regularly use GPS found 78\% of photos and 63\% of Rewinds accurate to their memory.
+%So far, our findings show that
+So regular GPS users remembered the locations in their digital memories less often, and from the locations they did remember, they were less likely to find a photo or Rewind accurate to their memory. One participant who identified as a regular GPS user said, ``I really don't pay attention to my surroundings when I'm driving. I'm focused on the GPS and the road,'' when asked about the accuracy of a trip.
+%Our results show that GPS usage influences what features participants pick out when deciding whether Rewinds are accurate reflections of their own memories of their trips.
+When we split the responses of regular GPS users from the other participants' responses, we saw that GPS users looked at signs in the Rewind the most to determine accuracy. Participants who were not regular GPS users cited the route and surrounding landmarks as features which made the Rewind believable as memories.
 
-Our results show that GPS usage influences what features participants pick out when deciding whether Rewinds are accurate reflections of their own memories of their trips. When we split the responses of regular GPS users from the other participants' responses, we saw that GPS users looked at signs in the Rewind the most to determine accuracy. Participants who were not regular GPS users cited the route and surrounding landmarks as features which made the Rewind believable as memories.
-
-\subsubsection{Frequent Travelers}
+%\subsubsection{Frequent Travelers}
 % no significant effects on photo belivability $\chi^2(1,86) = 0$, p = 0.4947(> 0.05)
 % significant effects on video belivability $\chi^2(1,128) = 5.837$, p = 0.0079 (< 0.01)
 % frequent - 86%, non-frequent - 65%
@@ -406,11 +418,11 @@ Our results show that GPS usage influences what features participants pick out w
 % traveling alone - 82%, not alone - 25%
 % significant effects on video/trip belivability if we use alpha = 0.1 - $\chi^2(1,127) = 1.865$, p = 0.086(< 0.1)
 % traveling alone - 84%, not alone - 72%
-Whether or not the participant was traveling alone during a trip is a significant predictor for whether the trip's associated Rewind will be kept. Rewinds in which the participant is traveling with another person make up about a fifth of all Rewinds in the entire study, but make up over half of the Rewinds that participants actually want to keep. Of Rewinds that participants judged desirable enough to keep, 39\% of were of trips in which the participant is traveling alone, and 54\% are of trips in which the participant is traveling with others. This difference is mildly significant $\chi^2(1, N=127) = 1.865$, $p <.1)$. The data shows clearly that a Rewind is considered more valuable if the trip it depicts was taken with company. 
+Whether or not the participant was traveling alone during a trip is a significant predictor for whether the trip's associated Rewind was desired to be kept. Rewinds in which the participant is traveling with another person make up about a fifth of all Rewinds in the entire study, but make up over half of the Rewinds that participants actually want to keep. Of Rewinds that participants judged desirable enough to keep, 39\% of were of trips in which the participant is traveling alone, and 54\% are of trips in which the participant is traveling with others. This difference is mildly significant $\chi^2(1, N=127) = 1.865$, $p <.1)$. The data shows clearly that a Rewind is considered more valuable if the trip it depicts was taken with company. 
 
 
-\subsubsection{Distance}
-% no ignificant effects on photo/location belivability $\chi^2(5,86) = 7.745$, p = 0.1709 (> 0.05)
+%\subsubsection{Distance}
+% no significant effects on photo/location belivability $\chi^2(5,86) = 7.745$, p = 0.1709 (> 0.05)
 % significant effects on video/trip belivability if we use alpha = 0.1 - $\chi^2(5,128) = 10.093$, p = 0.0726(< 0.1)
 % 0 - 100%, 1 - 75%, 2 - 75%, 3 - 85%, 4 - 80%, 5 - 33%
 
@@ -435,25 +447,25 @@ To get a better understanding of what the important features of locational memor
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Desirability}
-For Rewinds to be useful, they need to have value to their owners. We measured the value of photos and Rewinds by asking participants if they would want to keep the photo or Rewind after seeing it. One participant expressed his interestes in Rewind, saying ``Would keep photos that I know/can place in context, but would keep every single video... cool to look back on where you were, what you did/as a record". Overall, participants wished to keep 11\% of the photos they were shown and 15\% of the Rewinds they were shown. Because these were images from third-party services, they are naturally less likely to be desirable than media captured by the user themselves. In this section we will look at how the value of Rewind's digitally-fabricated memories differs between participants who consider themselves frequent travelers and participants who don't. We will also examine how visit frequency and travel companionship affect the desirability of a Rewind.
+For memories to be useful, they need to have value to their owners. We measured the value of photos and Rewinds by asking participants if they would want to keep the photo or Rewind after seeing it. One participant expressed his interestes in Rewind, saying ``Would keep photos that I know/can place in context, but would keep every single video... cool to look back on where you were, what you did/as a record". Overall, participants wished to keep 11\% of the photos they were shown and 15\% of the Rewinds they were shown. Because these were images from third-party services, they are naturally less likely to be desirable than media captured by the user themselves. In this section we will look at how the value of Rewind's digitally-fabricated memories differs between participants who consider themselves frequent travelers and participants who don't. We will also examine how visit frequency and travel companionship affect the desirability of a Rewind.
 
-\subsubsection{GPS usage}
+%\subsubsection{GPS usage}
 % no significant effects on photo desirability $\chi^2(1,179) = 0.338$, p = 0.2804(> 0.05)
 % significant effects on video/trip desirability $\chi^2(1, 177) = 7.319$, p = 0.0034(< 0.01)
 % GPS - 26%, non-GPS - 9%
 
-\subsection{Frequent Travellers}
+\subsubsection{Frequent Travelers}
 % no significant effects on photo desirability $\chi^2(1,179) = 0.828$, p = 0.1814(> 0.05)
 % significant effects on video/trip desirability $\chi^2(1, 179) = 9.754$, p = 0.0009(< 0.01)
 % frequent - 21 %, non-frequent - 2%
 Our study found that participants who considered themselves frequent travelers were more likely to keep their photos and Rewinds than participants who did not identify as frequent travelers. Frequent travelers kept 13\% of the photos they were shown and 21\% of Rewinds. But participants who identified as infrequent travelers kept only 7\% of photos and 2\% of Rewinds. Although the effect on photo desirability is not siginificant, the difference is significant for Rewinds desirability, $\chi^2(1, N=179) = 9.754$, $p <.01$. The results show that those who consider themselves frequent travelers tend to place higher value on digital memories than those who do not identify as frequent travelers.
 
-\subsubsection{Travel Companions}
+%\subsubsection{Travel Companions}
 % no significant effects on photo desirability $\chi^2(1,94) = 0.071$, p = 0.3948(> 0.05)
 % significant effects on video/trip desirability if alpha = 0.1 - $\chi^2(1, 133) = 2.443$, p = 0.059(< 0.1)
 % alone - 13%, not alone - 26%
 
-\subsubsection{Distance}
+%\subsubsection{Distance}
 % no significant effects on photo desirability $\chi^2(1,179) = 8.131$, p = 0.1492(> 0.05)
 % significant effects on video/trip desirability if alphe = 0.1 -  $\chi^2(5, 177) = 10.084$, p = 0.0729(< 0.1)
 % 0 - 0%, 1 - 0%, 2 - 11%,  3 - 10%, 4 - 20%,  5 - 40% 
