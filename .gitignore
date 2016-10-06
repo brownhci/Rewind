@@ -5,3 +5,5 @@ paper/uist_2016/paper.blg
 paper/uist_2016/paper.log
 paper/uist_2016/paper.pdf
 paper/uist_2016/paper.synctex.gz
+node_modules
+routes/seed.json

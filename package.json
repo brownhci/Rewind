@@ -1,0 +1,18 @@
+{
+  "name": "rewind-db",
+  "version": "1.0.0",
+  "description": "Weather lookup for rewind",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.5",
+    "morgan": "^1.7.0",
+    "mongoose": "^4.5.8",
+    "body-parser":"^1.15.2"
+  }
+}

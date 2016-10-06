@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+	<title>A trip down the memory lane...</title> 
+    
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="js/ext/jquery-ui-1.11.3/jquery-ui.css" />
+	<!-- google map api? -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GSlJw9b4ns8AHndV-EMp-kCA35ZAvSE&v=3.exp" type="text/javascript"></script> 
+	<script src="js/ext/three.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+    <script src="js/ext/jquery.js"></script>
+    <script src="js/ext/jquery-visibility.js"></script>
+	<script src="js/ext/underscore.js"></script>
+    <script src="js/ext/jquery-ui-1.11.3/jquery-ui.min.js"></script>
+	<script src="js/ext/moment-with-locales.min.js"></script>
+	<script src="js/ext/moment-timezone-with-data.min.js"></script>
+	<script src="js/ext/StreetviewSequence.js"></script>
+
+	<script src="js/ext/tinycolor.js"></script>
+
+	<script src="js/ext/caman.cleanup.js"></script>
+	<script src="js/render-ambience.js"></script>
+	<script src="js/rewind.js"></script>
+	<!-- <script src="js/rewind-upload.js"></script> -->
+</head> 
+<body>
+	<div id="survey-wrapper">
+		<div id="upload-wrapper" style="text-align:center;">
+			<h1 style="color: #008fed">How much do you remember?</h1> 
+			<div id="upload-area">
+				Select a json file: <input type="file" id="fileInput"></input>
+			</div>
+			OR
+			<div id="file-drop-area">
+				drag-n-drop here
+			</div>
+		</div>
+
+		<div id="question-list"></div>
+		<div id="button-box">
+			<button id="playButton" style="visibility:hidden">Loading Rewind...</button><br>
+			<button id="backButton" style="visibility:hidden">Back</button><br>
+			<!--<button id="submitButton" style="visibility:hidden">Submit</button>-->
+			<button id="nextButton" style="visibility:hidden">Next</button>
+			<div style="clear:both"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+    <div style="clear:both"></div>
+</body> 
+</html>
