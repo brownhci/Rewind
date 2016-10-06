@@ -1,21 +1,24 @@
 var Caman = require('caman');
 
 function getWeather(url, callback) {
-    $.getJSON(url, function(data){
-        var weather = 'normal';
-        if (data.snow == true){
-            weather = 'snow';
-        }else if (data.precipitation.precipitation > 0){
-            weather = 'rain';
-        }else {
-            data.cloudiness.forEach(function(condition){
-                if(condition.value > 2){
-                    weather = 'cloudy';
-                }
-            });
-        }
-        callback(weather);
-    });
+    $.getJSON(url)
+        .done(function( data ){
+            if (data.snow == true){
+                weather = 'snow';
+            }else if (data.precipitation.precipitation > 0){
+                weather = 'rain';
+            }else {
+                data.cloudiness.forEach(function(condition){
+                    if(condition.value > 2){
+                        weather = 'cloudy';
+                    }
+                });
+            }
+            callback(weather);
+        })//still show connection errors in the console
+        .error (function( jqxhr, textstatus, error){
+            callback('normal');
+        });
 }
 
 
