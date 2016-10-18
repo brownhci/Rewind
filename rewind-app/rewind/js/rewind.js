@@ -33,7 +33,7 @@ $(function() {
                 var routeSequence = StreetviewSequence($(pano), {
                     route: mergeGoogleResponses(gResults),
                     duration: 10000,
-                    totalFrames: 20, //TODO PHILIP
+                    totalFrames: 200, 
                     loop: true,
                     width: panoWidth,
                     height: panoHeight,
