@@ -40,9 +40,25 @@
 		</div>
 
 		<div id="question-list"></div>
+		<div id = "user-choices">
+	        <div id = "time-length">
+	            <p class = "user-text">You have <span id = "num-days" class = "user-text"></span> days of data.</p>
+	            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
+	            <!--
+	            Currently not using this. In the past, users were able to vary the length of the period of data (now it's just days)
+	            <p class = "user-text">View routes:</p>
+	            <input class = "length-radio" type="radio" name="length" value="day" checked>by Day<br>
+	            <input class = "length-radio" type="radio" name="length" value="week">by Week<br>
+	            <input class = "length-radio" type="radio" name="length" value="month">by Month<br>
+	        -->
+	        </div>
+	        <div id = "calendar">
+	            <p class = "user-text">Jump to Day<input id="datepicker" type="text" name="dates"></p>
+	        </div>
+	    </div>
 		<div id="button-box">
 			<button id="playButton" style="visibility:hidden">Loading Rewind...</button><br>
-			<button id="backButton" style="visibility:hidden">Back</button><br>
+			<button id="backButton" style="visibility:hidden">Back</button>
 			<!--<button id="submitButton" style="visibility:hidden">Submit</button>-->
 			<button id="nextButton" style="visibility:hidden">Next</button>
 			<div style="clear:both"></div>
