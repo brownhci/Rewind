@@ -1,8 +1,3 @@
-//Routes by week/day/month (allow for choice)
-//Gray images
-//Repeat images
-
-
 $(function() {
     var Caman = require('caman');
     var animate;
@@ -253,123 +248,15 @@ $(function() {
         handleUploadedFile(fileInput.files[0]);
     });
 
-    var days;
-    var currday;
-
     function handleUploadedFile(file) {
-        $("#upload-wrapper").html("");
+        $("#upload-wrapper").html("<img src='img/loading.gif' style='width:50px; margin: 20px 275px'></img>");
 
         var reader = new FileReader();
 
         reader.readAsText(file);
         reader.addEventListener('load', function(e) {
-            days = parseLocationJson(reader.result);
-            for(var d in days){
-                days[d].sort(function(a,b) {return (a.millis > b.millis) ? 1 : ((b.millis > a.millis) ? -1 : 0);});
-            }
-
-            missing_days = getMissingDays();
-            console.log(missing_days);
-
-            userChoices();
+            pullRoutesfromLocs(reader.result);
         });
-    }
-
-    function getNumDays(){
-        num_days = 0
-        for(var d in days){
-            num_days ++;
-        }
-        return num_days
-    }
-
-    function getEarliestDay(){
-        earliest = moment();
-        for(var d in days){
-            day = moment(d);
-            if(day.isBefore(earliest)){
-                earliest = day;
-            }
-        }
-
-        return earliest
-    }
-
-    function getMissingDays(){
-        //Returns a set of missing dates in the calendar (JS Date format)
-        //This will be used one time to format the calendar on initialization
-        //(So that users can't click these dates)
-        missing = new Set();
-        start = getEarliestDay();
-        end = getLastDay();
-
-        while(start.isBefore(end)){
-            start.add(1, 'days')
-            if(!days[momentToDate(start)]){
-                missing.add(momentToDate(start));
-            }
-        }
-
-        return missing;
-    }
-
-    function userChoices(){
-        //Initialize the little box that lets user make choices while viewing routes
-        $("#user-choices").fadeIn();
-        num_days = getNumDays();
-        currday = getEarliestDay();
-
-        $("#num-days").text(num_days);
-        $("#datepicker").datepicker({
-            beforeShowDay: function( date ) {
-                if(missing_days.has(momentToDate(moment(date)))) {
-                    return [false, "missing"];
-                } else {
-                    return [true, '', ''];
-                }
-            },
-            dateFormat: "yy/mm/dd",
-            minDate: getEarliestDay().toDate(),
-            maxDate: getLastDay().toDate(),
-            onSelect: function(dateText){
-                processCalendar(dateText)
-            }
-        });
-
-        $("#datepicker").datepicker("setDate",getEarliestDay().toDate());
-
-        period_choice = $("input[name='length']:checked").attr("value")
-
-        startRewind(getEarliestDay())
-        $("#upload-wrapper").html("<img src='img/loading.gif' style='width:50px; margin: 20px 275px'></img>");
-    }
-
-    function getLastDay(){
-        last = moment.unix(0);
-        for(var d in days){
-            day = moment(d);
-            if(day.isAfter(last)){
-                last = day;
-            }
-        }
-
-        return last;
-    }
-    
-    //Converts a moment.js to "YYYY-MM-DD" format
-    function momentToDate(day){
-        temp_day = moment(day)
-        datestring = temp_day.get("year") + "-"
-        month = parseInt(temp_day.get("month")) + 1
-        if(month < 10){
-            month = "0" + month;
-        }
-        date = parseInt(temp_day.get("date"))
-        if(date < 10){
-            date = "0"+date;
-        }
-        datestring += month + "-" + date
-        return datestring
     }
 
 
@@ -517,7 +404,6 @@ $(function() {
                 Caman.fromImage(image).then(function(caman) {
                     caman.attach(image);
 
-
                     var newImage = parent.childNodes[0];
                     var season;
                     if (isWinter(month, lat)){
@@ -540,6 +426,7 @@ $(function() {
                     $(newImage).attr("data-exposure", $(image).attr("data-exposure"));
                     $(newImage).attr("data-hour", $(image).attr("data-hour"));
                     $(newImage).attr("data-localHour", $(image).attr("data-localHour"));
+                    $(newImage).attr("data-weather", $(image).attr("data-weather"));
                     return caman.pipeline(function () {
                         this.saturation(saturation);
                         this.exposure(exposure);
@@ -598,7 +485,14 @@ $(function() {
         });
     }
 
-    function pullRoutesfromLocs(period, num_routes){
+    function pullRoutesfromLocs(fileContents){
+        var days = parseLocationJson(fileContents);
+        for(var d in days){
+            days[d].sort(function(a,b) {return (a.millis > b.millis) ? 1 : ((b.millis > a.millis) ? -1 : 0);});
+        }
+
+        //Data is now split into days sorted in order of timestamp (ascending)
+
         //We want to pull out an interesting route from the data
         //"Interesting" is subjective; I'll define some hopefully fairly standard characteristics here:
         // Route should be (somewhat) unique within the data
@@ -613,490 +507,210 @@ $(function() {
         // Disadvantage of DBSCAN is that I have to specify a set size for a cluster, which can be limiting
         // Other options are heirarchical clustering and K-Means.
 
-        //We'll find the best n routes (= num_routes) from the period and return
-        var data = []
-        for(var d in period){
-            data = data.concat(period[d])
-        }
-
+        //We'll find the best route from each day and return the starting latitude and longitude 
         var route_starts = []
-        latlngs = []
-        latlngtime = []
-        for(var l in data){
-            var line = data[l]
-            latlngs.push([parseFloat(line['latitude']), parseFloat(line['longitude'])])
-            latlngtime.push([parseFloat(line['latitude']), parseFloat(line['longitude']), parseInt(line['millis'])])
-        }
-        var poiscanner = new DBSCAN();
-        // This will return the assignment of each point to a cluster number, 
-        // points which have  -1 as assigned cluster number are noise.
-
-        var pois = poiscanner.run(latlngs, 0.0005, 10);
-        
-        //Associate points with their POIs
-        scanner_clusters = {}
-        for(var i = 0; i < pois.length; i++){
-            scanner_clusters[i] = [0, 0, 0];
-            cluster = pois[i];
-            for(var j = 0; j < cluster.length; j++){
-                point = latlngs[cluster[j]];
-                scanner_clusters[i][0] += point[0];
-                scanner_clusters[i][1] += point[1];
-                scanner_clusters[i][2] += 1;
-
-                latlng = latlngtime[cluster[j]];
-                latlng.push(i);
+        for(var d in days){
+            data = days[d]
+            latlngs = []
+            latlngtime = []
+            for(var l in data){
+                var line = data[l]
+                latlngs.push([parseFloat(line['latitude']), parseFloat(line['longitude'])])
+                latlngtime.push([parseFloat(line['latitude']), parseFloat(line['longitude']), parseInt(line['millis'])])
             }
+            var poiscanner = new DBSCAN();
+            // This will return the assignment of each point to a cluster number, 
+            // points which have  -1 as assigned cluster number are noise.
+            var pois = poiscanner.run(latlngs, 0.0005, 10);
 
-            //Average to obtain the center of the poi (for viz purposes)
-            scanner_clusters[i][0] /= scanner_clusters[i][2];
-            scanner_clusters[i][1] /= scanner_clusters[i][2];
-        }
+            //Associate points with their POIs
+            scanner_clusters = {}
+            for(var i = 0; i < pois.length; i++){
+                scanner_clusters[i] = [0, 0, 0];
+                cluster = pois[i];
+                for(var j = 0; j < cluster.length; j++){
+                    point = latlngs[cluster[j]];
+                    scanner_clusters[i][0] += point[0];
+                    scanner_clusters[i][1] += point[1];
+                    scanner_clusters[i][2] += 1;
 
-        for(var i = 0; i < poiscanner.noise.length; i++){
-            latlng = latlngtime[poiscanner.noise[i]];
-            latlng.push(-1);
-        }
-
-        //------------------------------
-        //Another important feature is the uniqueness of a route
-        //We can create an index measuring the uniqueness of each point, with a slight fuzzing of the data
-        
-        //Uniqueness here is binary, where anything that gets clustered is not unique 
-        var uniquescanner = new DBSCAN();
-        var uniques = uniquescanner.run(latlngs, 0.00005, 2);
-
-        for(var i = 0; i < uniques.length; i++){
-            scanner_clusters[i] = [0, 0, 0];
-            cluster = uniques[i];
-            for(var j = 0; j < cluster.length; j++){
-                point = latlngs[cluster[j]];
-                latlng = latlngtime[cluster[j]];
-                latlng.push(i);
-            }
-        }
-
-        //-1 (noise) means unique; >= 0 means the point was clustered, so it's not unique
-        for(var i = 0; i < uniquescanner.noise.length; i++){
-            latlng = latlngtime[uniquescanner.noise[i]];
-            latlng.push(-1);
-        }
-        
-        //------------------------------
-        //We can partition the data into "routes"; for now, let's say a route ends when the user stays in a POI for 30 minutes (1800000 millisecs)
-        //This allows the user to amble and stop at certain places within the larger picture of going somewhere, 
-        // thereby flagging routes with interesting, but intermediate, stops
-        //These routes are consecutive and non-overlapping (i.e. each lat/lng is in exactly one route)
-        //However, a route is only valid if it goes outside of a POI (i.e. cannot exclusively be within a POI, like sleeping)
-            
-        routes = []
-        curr_route = []
-        poi_count = 0
-        poi_time_count = 0
-        prev_time = -1
-        curr_time = -1
-        curr_poi = -2
-        changed_pois = false
-
-        for(var i = 0; i < latlngtime.length; i++){
-            point = latlngtime[i]
-            latlng = [point[0], point[1]]
-            curr_time = point[2]
-            if(prev_time == -1){
-                prev_time = curr_time
-            }
-            label = point[3]
-            //Not in POI: considered to be moving along a route
-            if(label == -1){
-                poi_count = 0
-                poi_time_count = 0
-                curr_poi = -1
-                changed_pois = true
-            }
-            //In a POI: If we stay in this POI for too long, the route ends
-            else{
-                poi_count += 1
-                poi_time_count += curr_time - prev_time
-                if(curr_poi != label && curr_poi != -2){
-                    changed_pois = true
-                    poi_count = 0
-                    poi_time_count = 0
+                    latlng = latlngtime[cluster[j]];
+                    latlng.push(i);
                 }
-                curr_poi = label
-                if(poi_time_count >= 300){ //300 = 5 minutes; 900 = 15 minutes
+
+                //Average to obtain the center of the poi (for viz purposes)
+                scanner_clusters[i][0] /= scanner_clusters[i][2];
+                scanner_clusters[i][1] /= scanner_clusters[i][2];
+            }
+
+            for(var i = 0; i < poiscanner.noise.length; i++){
+                latlng = latlngtime[poiscanner.noise[i]];
+                latlng.push(-1);
+            }
+          
+            //------------------------------
+            //Another important feature is the uniqueness of a route
+            //We can create an index measuring the uniqueness of each point, with a slight fuzzing of the data
+            
+            //Uniqueness here is binary, where anything that gets clustered is not unique 
+            var uniquescanner = new DBSCAN();
+            var uniques = uniquescanner.run(latlngs, 0.00005, 2);
+
+            for(var i = 0; i < uniques.length; i++){
+                scanner_clusters[i] = [0, 0, 0];
+                cluster = uniques[i];
+                for(var j = 0; j < cluster.length; j++){
+                    point = latlngs[cluster[j]];
+                    latlng = latlngtime[cluster[j]];
+                    latlng.push(i);
+                }
+            }
+
+            //-1 (noise) means unique; >= 0 means the point was clustered, so it's not unique
+            for(var i = 0; i < uniquescanner.noise.length; i++){
+                latlng = latlngtime[uniquescanner.noise[i]];
+                latlng.push(-1);
+            }
+            
+            //------------------------------
+            //We can partition the data into "routes"; for now, let's say a route ends when the user stays in a POI for 30 minutes (1800000 millisecs)
+            //This allows the user to amble and stop at certain places within the larger picture of going somewhere, 
+            // thereby flagging routes with interesting, but intermediate, stops
+            //These routes are consecutive and non-overlapping (i.e. each lat/lng is in exactly one route)
+            //However, a route is only valid if it goes outside of a POI (i.e. cannot exclusively be within a POI, like sleeping)
+                
+            routes = []
+            curr_route = []
+            poi_count = 0
+            poi_time_count = 0
+            prev_time = -1
+            curr_time = -1
+            curr_poi = -2
+            changed_pois = false
+
+            for(var i = 0; i < latlngtime.length; i++){
+                point = latlngtime[i]
+                latlng = [point[0], point[1]]
+                curr_time = point[2]
+                if(prev_time == -1){
+                    prev_time = curr_time
+                }
+                label = point[3]
+                //Not in POI: considered to be moving along a route
+                if(label == -1){
                     poi_count = 0
                     poi_time_count = 0
-                    if(changed_pois && curr_route.length >= 10){
-                        //Split the route into 10-minute pieces
-                        splits = 0
-                        start_time = curr_route[0][2]
-                        end_time = start_time + 600;
-                        mini_route = []
-                        for(var l in curr_route){
-                            latlng = curr_route[l];
-                            if(start_time >= end_time && mini_route.length >= 5){
-                                splits++;
-                                routes.push(mini_route);
-                                start_time = latlng[2];
-                                end_time = start_time + 600;
-                                mini_route = [];
-                            }else if(start_time >= end_time){
-                                start_time = latlng[2];
-                                end_time = start_time + 600;
-                                mini_route = [];
-                            }
-                            mini_route.push(latlng);
-                            start_time += latlng[2]-start_time;
-                        }
-                        if(splits > 0){
-                            routes[routes.length-1].concat(mini_route)
-                        }else if(mini_route.length >= 5){
-                            routes.push(mini_route);
-                        }
+                    curr_poi = -1
+                    changed_pois = true
+                }
+                //In a POI: If we stay in this POI for too long, the route ends
+                else{
+                    poi_count += 1
+                    poi_time_count += curr_time - prev_time
+                    if(curr_poi != label && curr_poi != -2){
+                        changed_pois = true
+                        poi_count = 0
+                        poi_time_count = 0
                     }
-                    curr_route = [point]
-                    changed_pois = false
-                    continue
+                    curr_poi = label
+                    if(poi_time_count >= 300){ //300 = 5 minutes; 900 = 15 minutes
+                        poi_count = 0
+                        poi_time_count = 0
+                        if(changed_pois && curr_route.length >= 10){
+                            //Split the route into 10-minute pieces
+                            splits = 0
+                            start_time = curr_route[0][2]
+                            end_time = start_time + 600;
+                            mini_route = []
+                            for(var l in curr_route){
+                                latlng = curr_route[l];
+                                if(start_time >= end_time && mini_route.length >= 5){
+                                    splits++;
+                                    routes.push(mini_route);
+                                    start_time = latlng[2];
+                                    end_time = start_time + 600;
+                                    mini_route = [];
+                                }else if(start_time >= end_time){
+                                    start_time = latlng[2];
+                                    end_time = start_time + 600;
+                                    mini_route = [];
+                                }
+                                mini_route.push(latlng);
+                                start_time += latlng[2]-start_time;
+                            }
+                            if(splits > 0){
+                                routes[routes.length-1].concat(mini_route)
+                            }else if(mini_route.length >= 5){
+                                routes.push(mini_route);
+                            }
+                        }
+                        curr_route = [point]
+                        changed_pois = false
+                        continue
+                    }
+                }
+                        
+                //We only start tracking the route once we leave the POI we started in
+                if(changed_pois){
+                    curr_route.push(point)
+                }
+            }
+            console.log(routes.length + " routes found on " + d);
+            
+            if(routes.length == 0){
+                continue;
+            }
+            
+            //------------------------------
+            //These two metrics, uniqueness and the presence of POIs, can be used to score routes and then select an interesting one
+            //Experimentally, each unique lat/lng is worth 1 point, and each lat/lng spent in a POI is worth 1 point
+            //Each lat/lng's score is modified by its accuracy(?)
+            //Then the total score is divided by the total number of lat/lngs, to standardize scores
+            
+            route_scores = []
+            for(var r in routes){
+                var route = routes[r];
+                var score = 0.0
+                for(var l in route){
+                    latlng = route[l];
+                    if(latlng[4] == -1){ //Unique point
+                        score += 1
+                    }
+                    if(latlng[3] != -1){ //POI
+                        score += 1
+                    }
+                }
+                //Normalize for number of points
+                score /= route.length;
+                route_scores.push([route, score])
+            }
+        
+            top_route = [[], -1]
+            for(var r in route_scores){
+                route = route_scores[r];
+                if(route[1] > top_route[1]){
+                    top_route = route
                 }
             }
                     
-            //We only start tracking the route once we leave the POI we started in
-            if(changed_pois){
-                curr_route.push(point)
-            }
+            top_route = top_route[0];
+            route_starts.push(top_route[0]);
         }
-        console.log(routes.length + " routes found in period starting " + currday.format("YYYY-MM-DD"));
-
-        //There are a few edge cases where we would find 0 routes in the data.
-        //This would happen if the data given is not diverse (or numerous) enough
-        //The real problem here is (probably) that the poiscanner only has 1 POI with no noise, so nothing comprises a route
-        //We can just move on to the next (or previous) day of data (pending some smarter way to deal with this)
-        if(routes.length == 0){
-            return [[]];
+        for(var r in route_starts){
+            route_starts[r]['latitude'] = route_starts[r][0];
+            route_starts[r]['longitude'] = route_starts[r][1];
+            route_starts[r]['millis'] = route_starts[r][2];
+            route_starts[r]['date'] = moment.unix(route_starts[r]['millis']).format('YYYY-MM-DD');
         }
-        
-        //------------------------------
-        //These two metrics, uniqueness and the presence of POIs, can be used to score routes and then select an interesting one
-        //Experimentally, each unique lat/lng is worth 1 point, and each lat/lng spent in a POI is worth 1 point
-        //Each lat/lng's score is modified by its accuracy(?)
-        //Then the total score is divided by the total number of lat/lngs, to standardize scores
-        
-        route_scores = []
-        for(var r in routes){
-            var route = routes[r];
-            var score = 0.0
-            for(var l in route){
-                latlng = route[l];
-                if(latlng[4] == -1){ //Unique point
-                    score += 1
-                }
-                if(latlng[3] != -1){ //POI
-                    score += 1
-                }
-            }
-            //Normalize for number of points
-            score /= route.length;
-            route_scores.push([route, score])
-        }
-    
-        route_scores.sort(function(a, b) {
-            a = a[1];
-            b = b[1];
-
-            return a > b ? -1 : (a < b ? 1 : 0);
-        });
-
-        top_routes = []
-        for(var i = 0; i < Math.min(num_routes, route_scores.length); i++){
-            top_routes.push(route_scores[i][0])
-        }
-
-        console.log(top_routes)
-        return top_routes
+        processLocations(route_starts, days);
     }
 
-    function getCurrPeriod(p_choice, start_date){
-        //Given the starting date and the length of the period, returns the JSON object combining all days' data from that period
-        //e.g. if the p_choice = "week" and start_date is a Wednesday, returns all location data from Wednesday through Sunday
-
-        //Note: we do assume here that a "week" is monday-sunday, not sunday-saturday. maybe future versions could be more locale-aware?
-        
-        //Note: For now, we are assuming p_choice always == "day" (in order to simplify the UX)
-        p_choice = "day"
-
-        period_keys = []
-        max_date = getLastDay()
-
-        temp_date = getCurrPeriodDate(p_choice, start_date)
-
-        first_date = getEarliestDay()
-        while(first_date.isAfter(temp_date)){
-            temp_date.add(1, 'days')
-        }
-        
-        //If one-day period, end of week with week, or end of month with month, or end of custom period, return
-        while(!(max_date.isBefore(temp_date))){
-            period_keys.push(momentToDate(temp_date))
-            temp_date.add(1, 'days')
-
-            if(p_choice == "day" || (p_choice == "week" && temp_date.isoWeekday() == 7) || (p_choice == "month" && temp_date.date() == temp_date.daysInMonth())){
-                break
-            }
-        }
-
-        period = []
-        for(var p in period_keys){
-            period = period.concat(days[period_keys[p]])
-        }
-
-        return period
-    }
-
-    function getNextPeriodDate(p_choice, day){
-        //Given a date and the period length, returns the moment.js object of the next period's starting date
-        //e.g. if start_date = March 15 and the p_choice = "month", returns the moment.js for April 1
-        start_date = moment(day.format("YYYY-MM-DD"))
-        p_choice = "day";
-        if(p_choice == "day"){
-            start_date.add(1, 'days');
-        }else if(p_choice == "week"){
-            start_date.day(8) //Next Monday
-        }else if(p_choice == "month"){
-            start_date.add(1, 'month')
-            start_date.date(1)
-        }
-
-        //To deal with holes in the data (i.e. days where no data is collected):
-        if(!days[momentToDate(start_date)] && (start_date.isSame(getLastDay()) || start_date.isBefore(getLastDay()))){
-            console.log("No data collected on " + start_date.format("YYYY-MM-DD") + ". Moving to next day")
-            return getNextPeriodDate(p_choice, start_date)
-        }
-        return start_date
-    }
-
-    function getCurrPeriodDate(p_choice, day){
-        //Given a date and the period length, returns the moment.js object of the current period's starting date
-        //e.g. if start_date = March 15 and the p_choice = "month", returns the moment.js for March 1
-        start_date = moment(day.format("YYYY-MM-DD"))
-        p_choice = "day";
-        if(p_choice == "day"){
-            //No change
-        }else if(p_choice == "week"){
-            start_date.day(1) //This (past) Monday
-        }else if(p_choice == "month"){
-            start_date.date(1)
-        }
-
-        //If the current period date does not exist, 
-        return start_date
-    }
-
-    function getPrevPeriodDate(p_choice, day){
-        //Given a date and the period length, returns the moment.js object of the previous period's starting date
-        //e.g. if start_date = March 15 and the p_choice = "month", returns the moment.js for February 1
-        start_date = moment(day.format("YYYY-MM-DD"))
-        p_choice = "day";
-        if(p_choice == "day"){
-            start_date.subtract(1, 'days');
-        }else if(p_choice == "week"){
-            start_date.day(-8); //Last Monday
-        }else if(p_choice == "month"){
-            start_date.subtract(1, 'month')
-            start_date.date(1)
-        }
-
-        //To deal with holes in the data (i.e. days where no data is collected):
-        if(!days[momentToDate(start_date)] && (start_date.isSame(getEarliestDay()) || start_date.isAfter(getEarliestDay()))){
-            console.log("No data collected on " + start_date.format("YYYY-MM-DD") + ". Moving to previous day")
-            return getPrevPeriodDate(p_choice, start_date)
-        }
-        return start_date
-    }
-
-    function startRewind(start_date){
-        //initializes events and route selects for the first period
-        initializeEvents();
-        period = getCurrPeriod($("input[name='length']:checked").attr("value"), start_date)
-        processPeriod(period, "next")
-    }
-
-    var top_routes = []
-    function processPeriod(period, direction){
-        //period is an objects with keys "YYYY-MM-DD" and values as location data
-        //(it is a subset of the original days variable)
-        top_route = pullRoutesfromLocs(period, 1)[0]
-
-        if(top_route.length == 0){
-            if(direction == "next"){
-                console.log("No routes found: Obtaining next data range.");
-                var nextday = getNextPeriodDate($("input[name='length']:checked").attr("value"), currday);
-                if(nextday.isBefore(getLastDay()) || nextday.isSame(getLastDay())){
-                    period = getCurrPeriod($("input[name='length']:checked").attr("value"), nextday)
-                    currday = nextday
-                    return processPeriod(period, direction);
-                }else{
-                    alert("We found 0 routes in the remainder of your data.");
-                    return null;
-                }
-            }else if(direction == "back"){
-                console.log("No routes found: Obtaining previous data range.");
-                var prevday = getPrevPeriodDate($("input[name='length']:checked").attr("value"), currday);
-                if(prevday.isAfter(getEarliestDay()) || prevday.isSame(getEarliestDay())){
-                    period = getCurrPeriod($("input[name='length']:checked").attr("value"), prevday)
-                    currday = prevday
-                    return processPeriod(period, direction);
-                }else{
-                    alert("We found 0 routes in the remainder of your data.");
-                    return null;
-                }
-            }
-        }
-        
-        //Make the current date the date of the route
-        currday = moment.unix(top_route[0][2])
-        $("#route-date").text(currday.format('YYYY-MM-DD'))
-        $("#datepicker").datepicker("setDate",currday.toDate());
-
-        processLocations(top_route, getRouteInfo(top_route))
-    }
-
-    function processCalendar(date_text){
-        currday = moment(date_text)
-        period = getCurrPeriod($("input[name='length']:checked").attr("value"), currday)
-        processPeriod(period, "next")
-    }
-
-    //Pulls out route start information for processLocations
-    function getRouteInfo(route){
-        route_start = route[0];
-        route_start['latitude'] = route_start[0];
-        route_start['longitude'] = route_start[1];
-        route_start['millis'] = route_start[2];
-        route_start['date'] = moment.unix(route_start['millis']).format('YYYY-MM-DD');
-
-        return route_start
-    }
-
-    //Determines which buttons (between Next and Back)
-    function buttonValidity(){
-        //Depending on the period choice and the curr date
-        p_choice = $("input[name='length']:checked").attr("value")
-        max_date = getLastDay();
-        first_date = getEarliestDay();
-
-        prev_date = getPrevPeriodDate(p_choice, currday)
-        next_date = getNextPeriodDate(p_choice, currday)
-
-        console.log(prev_date.format("YYYY-MM-DD"), currday.format("YYYY-MM-DD"), next_date.format("YYYY-MM-DD"))
-
-        if(max_date.isBefore(next_date)){
-            $("#nextButton").off("click");
-            $("#nextButton").css("opacity", 0.5)
-        }else{
-            nextButtonEvent();
-            $("#nextButton").css("opacity", 1)
-        }
-
-        if(first_date.isAfter(prev_date)){
-            $("#backButton").off("click");
-            $("#backButton").css("opacity", 0.5)
-        }else{
-            backButtonEvent();
-            $("#backButton").css("opacity", 1)
-        }
-    }
-    
-    //Initializes click events (only happens one time)
-    function initializeEvents(){
-        $("#submitButton").click(function() {
-            var questions = $(".location-questions");
-            var answers = [];
-
-            questions.each(function(i, locQuestion) {
-                var url = $(locQuestion).find("img").attr("src");
-                var questions = $(locQuestion).find(".question");
-
-                var answer = {
-
-                    "url": url,
-                    "q1": $(questions[0]).find("input:checked").attr("value") || null,
-                    "q2": $(questions[1]).find("input:checked").attr("value") || null,
-                    "q3": $(questions[2]).find("input:checked").attr("value") || null,
-                };
-
-                answers.push(answer);
-            });
-
-            yesCounter = 0;
-            answers.forEach(function(answer) {
-                if (answer["q1"] == "true")
-                    yesCounter++;
-            });
-            alert("You remember " + yesCounter + " out of " + answers.length + " places");
-        });
-
-        $("#nextButton").visible();
-        $("#backButton").visible();
-        nextButtonEvent();
-        backButtonEvent();
-
-        $(".length-radio").on("change", function(){
-            buttonValidity();
-            period = getCurrPeriod($("input[name='length']:checked").attr("value"), currday);
-            processPeriod(period);
-            $("#upload-wrapper").html("<img src='img/loading.gif' style='width:50px; margin: 20px 275px'></img>");
-        });
-    }
-
-    //We often turn on and off the clickability of these buttons, so here's a function that resets the event
-    function nextButtonEvent(){
-        $("#nextButton").off("click");
-        $("#nextButton").click(function() {
-            $("div.hyperlapse").hide().find("*").remove();
-            $("img.location, canvas.location").show().parent().removeClass("loading-hyperlapse");
-
-            //TODO: I'm not sure what this commented-out section does, but it doesn't seem to have an effect...
-            //var $img = $("#q" + momentToDate(currday) + ">" + ".image-pano").find(".location");
-            //console.log($img[0].attributes);
-            //var cur_weather = $img[0].attributes[11].value;
-            //changeWeather(cur_weather, animate, audio);
-
-            currday = getNextPeriodDate($("input[name='length']:checked").attr("value"), currday);
-            period = getCurrPeriod($("input[name='length']:checked").attr("value"), currday);
-            processPeriod(period, "next");
-            $("#upload-wrapper").html("<img src='img/loading.gif' style='width:50px; margin: 20px 275px'></img>");
-
-            //$("#playButton").off();
-            //$("#playButton").invisible();
-        });
-    }
-
-    function backButtonEvent(){
-        $("#backButton").off("click")
-        $("#backButton").click(function() {
-            $("div.hyperlapse").hide().find("*").remove();
-            $("img.location, canvas.location").show().parent().removeClass("loading-hyperlapse");
-
-            currday = getPrevPeriodDate($("input[name='length']:checked").attr("value"), currday);
-            $("#datepicker").datepicker("setDate",currday.toDate());
-            period = getCurrPeriod($("input[name='length']:checked").attr("value"), currday);
-            processPeriod(period, "back");
-            $("#upload-wrapper").html("<img src='img/loading.gif' style='width:50px; margin: 20px 275px'></img>");
-            // console.log("Showing: #q" + imageIndex + " imageIndex: " + imageIndex + " imageCount: " + urls.length);
-            //var $img = $("#q" + currday + ">" + ".image-pano").find(".location");
-            //var cur_weather = $img[0].attributes[11].value;
-            // console.log(cur_weather);
-            //changeWeather(cur_weather, animate, audio);
-            //if ($("#playButton")) $("#playButton").remove();
-            //$("#playButton").off();
-            //$("#playButton").invisible();
-        });
-    }
-
-    function processLocations(route, location) {
+    function processLocations(locations, days) {
         $("#upload-wrapper").hide();
 
-        var urls = generateStreetViewUrls([location], false);
+        var imageIndex = 0;
+
+        var urls = generateStreetViewUrls(locations, false);
 
         var questionsHtml = "";
 
@@ -1112,17 +726,19 @@ $(function() {
 
 
         urls.forEach(function(url, i) {
+            //console.log(url)
             var questionHtml = questionHtmlTpl
                 .replace("{{SRC}}", url)
-                .replace(/{{INDEX}}/g, currday.format("YYYY-MM-DD"))
-                .replace("{{DATE}}", location.date)
-                .replace("{{LAT}}", location.latitude)
-                .replace("{{LON}}", location.longitude)
-                .replace("{{MILLIS}}", location.millis)
-                //.replace("{{LOCMETA}}", "" + location.pickType + (location.homeDist * 1000).toFixed(0));
+                .replace(/{{INDEX}}/g, i)
+                .replace("{{DATE}}", locations[i].date)
+                .replace("{{LAT}}", locations[i].latitude)
+                .replace("{{LON}}", locations[i].longitude)
+                .replace("{{MILLIS}}", locations[i].millis)
+                //.replace("{{LOCMETA}}", "" + locations[i].pickType + (locations[i].homeDist * 1000).toFixed(0));
 
             questionsHtml += questionHtml;
         });
+
 
         var $resDiv = $("#question-list");
         questionsHtml = "<canvas id='rainLayer' width='640' height='640' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>" 
@@ -1152,13 +768,8 @@ $(function() {
             };
         })
 
-        $("#q"+currday.format("YYYY-MM-DD")).show();
-        $("#q"+currday.format("YYYY-MM-DD")).addClass('active')
-
-        buttonValidity();
-
         $(".play-icon").click(function() {
-            
+
             $('.active').find('.image-pano').each(function(){
                 $(this).addClass('loading-hyperlapse');
             })
@@ -1169,7 +780,6 @@ $(function() {
             var id = $img.attr("data-id");
             var millis = $img.attr("data-millis");
             var lat = $img.attr("data-lat");
-
             var lon = $img.attr("data-lon");
 
             window.modifyHyperlapseImages = function(image, callback) {
@@ -1200,6 +810,93 @@ $(function() {
                     color: "#7acaff"
                 });
             }
+        });
+
+        $(".location-questions").each(function() {
+            $(this).hide();
+        });
+
+        $("#q0").show();
+        $("#q0").addClass('active')
+
+        $("#nextButton").visible();
+
+        $("#submitButton").click(function() {
+            var questions = $(".location-questions");
+            var answers = [];
+
+            questions.each(function(i, locQuestion) {
+                var url = $(locQuestion).find("img").attr("src");
+                var questions = $(locQuestion).find(".question");
+
+                var answer = {
+                    "url": url,
+                    "q1": $(questions[0]).find("input:checked").attr("value") || null,
+                    "q2": $(questions[1]).find("input:checked").attr("value") || null,
+                    "q3": $(questions[2]).find("input:checked").attr("value") || null,
+                };
+
+                answers.push(answer);
+            });
+
+            
+
+            yesCounter = 0;
+            answers.forEach(function(answer) {
+                if (answer["q1"] == "true")
+                    yesCounter++;
+            });
+            alert("You remember " + yesCounter + " our of " + answers.length + " places");
+        });
+
+        $("#nextButton").click(function() {
+            $("div.hyperlapse").hide().find("*").remove();
+            $("img.location, canvas.location").show().parent().removeClass("loading-hyperlapse");
+
+            $("#backButton").visible();
+            if (imageIndex < urls.length - 1) {
+                $("#q" + imageIndex).hide();
+                imageIndex++;
+            }
+            if (imageIndex == urls.length - 1) {
+                $("#nextButton").invisible();
+            }
+            $("#q" + imageIndex).show();
+            $("#q" + (imageIndex - 1)).removeClass('active')
+            $("#q" + imageIndex).addClass('active')
+            $(".play-icon").css("display","");
+
+            var $img = $("#q" + imageIndex + ">" + ".image-pano").find(".location");
+            var cur_weather = $img[0].attributes[11].value;
+            changeWeather(cur_weather, animate, audio);
+            $("#playButton").off();
+            $("#playButton").invisible();
+        });
+
+        $("#backButton").click(function() {
+            $("div.hyperlapse").hide().find("*").remove();
+            $("img.location, canvas.location").show().parent().removeClass("loading-hyperlapse");
+
+            $("#nextButton").visible();
+            if (imageIndex > 0) {
+                imageIndex--;
+            }
+            if (imageIndex == 0) {
+                $("#backButton").invisible();
+            }
+            $("#q" + (imageIndex + 1)).hide();
+            $("#q" + (imageIndex + 1)).removeClass('active')
+            $("#q" + imageIndex).show();
+            $("#q" + imageIndex).addClass('active');
+            $(".play-icon").css("display","");
+            // console.log("Showing: #q" + imageIndex + " imageIndex: " + imageIndex + " imageCount: " + urls.length);
+            var $img = $("#q" + imageIndex + ">" + ".image-pano").find(".location");
+            var cur_weather = $img[0].attributes[11].value;
+            // console.log(cur_weather);
+            changeWeather(cur_weather, animate, audio);
+            //if ($("#playButton")) $("#playButton").remove();
+            $("#playButton").off();
+            $("#playButton").invisible();
         });
     }
 

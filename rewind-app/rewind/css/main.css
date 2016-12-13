@@ -105,6 +105,7 @@ div.hyperlapse canvas {
 #button-box {
 	width: 200px;
 	height: auto;
+	margin-top: 250px;
 	margin-left: 850px;
 	position: absolute;
 }
@@ -113,7 +114,6 @@ div.hyperlapse canvas {
 #button-box button {
 	padding: 8px 16px;
 	margin-right: 40px;
-	margin-top: 25px;
 	margin-bottom: 10px;
 	border: none;
 	border-width: 1px;
@@ -170,39 +170,5 @@ div.hyperlapse canvas {
     #button-box{
     	padding-left: 15%;
     }
-}
-
-#user-choices{
-    display: none;
-    padding: 20px 20px;
-    margin-top: 25px;
-	margin-left: 1050px;
-    width: 300px;
-    border: #888888 1px solid;
-    box-shadow: -2px 2px 5px 0px #888888;
-    border-radius: 15px;
-}
-
-#datepicker{
-	margin-left: 15px;
-    width: 90px;
-    border-radius: 5px;
-    border: #cccccc 1px solid;
-    height: 25px;
-    padding-left: 5px;
-	font-family: "Merriweather", serif; 
-}
-
-.length-radio{
-    margin-left: 20px;
-}
-
-#datepicker:hover{
-    background: #cccccc;
-    cursor: pointer;
-}
-
-.missing{
-	opacity: 0.3;
 }
 
