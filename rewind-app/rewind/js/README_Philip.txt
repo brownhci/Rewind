@@ -12,4 +12,4 @@ Sometimes, we show a route that Google doesn't have Street View images for, so t
 When playing a Rewind, if a user spends some time in one place (e.g. at a stoplight while driving), the Rewind will pull multiple of the same image to show to the user.
     This isn't really ideal all the time because it disrupts the smoothness of the image sequence, so it might be nice to eliminate those duplicate images.
 
-Please email me (philip_hinch@brown.edu) if you have any questions! I tried to add comments to my things, but it is a pretty confusing js file, so I'm happy to help in any way I can.
+Please email me (philip_hinch@brown.edu) if you have any questions! I tried to add comments to my things, but it is a pretty confusing js file, so I'm happy to help in any way I can. 
