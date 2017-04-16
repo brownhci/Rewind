@@ -1,21 +1,88 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #fbfbfb;
+	/*background-image: url("../img/compressed_images/background-photo_2-compressor.jpg");*/
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color:#464646;
 	overflow: hidden;
 	font-family: "Merriweather", serif; 
 	font-weight: 400;
 	color: #666;
+	content: '';
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	box-shadow: inset 0px 0px 2000px black;
 }
 
+#control-inside {
+	position: relative;
+    margin-left: 800px;
+}
+#control {
+	/*display: inline-block;*/
+}
+
+#sample {
+	border: 1px solid #666;
+}
+
+.user-text {
+	color: white;
+	font-size: 15px;
+}
+
+input {
+/*  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;*/
+}
+
+.standard{
+	margin-left: -240px ;
+	text-align: center;
+    padding: 6px 12px;
+    transform: translateY(4px);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.standard:hover {
+	background-color: rgba(0,0,0, .3)
+}
+
+.standard:active {
+ 
+  	transform: translateY(4px);
+}
+
+span#or {
+	font-size: 12px;
+	color: white;
+	padding: 5px;
+}
 #survey-wrapper {
 	position: relative;
 	width: 100%;
 	padding: 20px 0px;
 	height: 450px;
-	background-color: #fff;
+	
 	margin-top: 100px;
-	box-shadow: 0 0 20px rgba(0,0,0,.2);
+	/*box-shadow: 0 0 20px rgba(0,0,0,.2);*/
+
+	font-family: Avenir;
+    src: url(Avenir.ttc);
 }
 
 #question-list {
@@ -24,6 +91,7 @@ body {
 	margin-left: 15%;
 	position: absolute;
 	float: left;
+	display: block;
 	/*visibility: hidden;*/
 }
 
@@ -103,13 +171,17 @@ div.hyperlapse canvas {
 }
 
 #button-box {
-	width: 200px;
+/*	width: 200px;
 	height: auto;
 	margin-left: 850px;
-	position: absolute;
+	position: absolute;*/
+	text-align: center;
 }
 
-
+#test {
+	display: block;
+	background-color: red;
+}
 #button-box button {
 	padding: 8px 16px;
 	margin-right: 40px;
@@ -120,8 +192,15 @@ div.hyperlapse canvas {
 	border-color: #ccc;
 	border-style: double;
 	border-radius: 4px;
-	background-color: #009aff;
+	background-color: rgba(0,0,0,0);
 	color: white;
+	font-family: Avenir;
+    src: url(Avenir.ttc);
+    font-size: 15px;
+}
+
+#button-box button:hover {
+	background-color: rgba(0,0,0, .3)
 }
 
 #rewind-controls {
@@ -133,20 +212,36 @@ div.hyperlapse canvas {
 }
 
 #upload-area {
-	margin-bottom: 10px;
+/*	margin: 10px;*/
+	height: 22px;
+	text-align: center;
+	  margin: 0px auto;
+	  margin-top: 10px;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+input#fileInput {
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.3);
+
 }
 
 #file-drop-area {
 	border: 3px dashed rgba(0,0,0,.3);
-	width: 200px;
-	height: 150px;
-	margin: 10px auto;
+	width: 350px;
+	height: 250px;
+	margin: 0 auto;
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 130px;
+	margin-top: 20px;
+	color: white;
 }
 
 #file-drop-area.dragging {
-	border: 3px dashed rgb(0,143,237);
+	border: 3px dashed white;
 }
 
 .location-meta {
@@ -162,24 +257,27 @@ div.hyperlapse canvas {
 	visibility: hidden;
 }
 
-
 @media screen and (min-width: 1300px) {
     #question-list {
     	margin-left: 25%;
     }
     #button-box{
-    	padding-left: 15%;
+    	/*padding-left: 15%;*/
     }
 }
 
 #user-choices{
-    display: none;
-    padding: 20px 20px;
-    margin-top: 25px;
-	margin-left: 1050px;
-    width: 300px;
-    border: #888888 1px solid;
-    box-shadow: -2px 2px 5px 0px #888888;
+	display: none;
+    /*position: relative;*/
+    text-align: center;
+
+    right: -66%;
+    /*padding: 20px 20px;*/
+/*    margin-top: 25px;
+	margin-left: 1050px;*/
+    
+    /*border: #888888 1px solid;*/
+    
     border-radius: 15px;
 }
 
@@ -190,7 +288,8 @@ div.hyperlapse canvas {
     border: #cccccc 1px solid;
     height: 25px;
     padding-left: 5px;
-	font-family: "Merriweather", serif; 
+	font-family: Avenir, serif;
+    src: url(Avenir.ttc);
 }
 
 .length-radio{

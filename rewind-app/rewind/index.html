@@ -21,50 +21,92 @@
 
 	<script src="js/ext/tinycolor.js"></script>
 
+	<script src="js/random.js"></script>
+
 	<script src="js/ext/caman.cleanup.js"></script>
 	<script src="js/render-ambience.js"></script>
 	<script src="js/rewind.js"></script>
 	<!-- <script src="js/rewind-upload.js"></script> -->
 </head> 
 <body>
+
+
+
+
+
+
 	<div id="survey-wrapper">
+
+
+
+
 		<div id="upload-wrapper" style="text-align:center;">
-			<h1 style="color: #008fed">How much do you remember?</h1> 
-			<div id="upload-area">
-				Select a json file: <input type="file" id="fileInput"></input>
-			</div>
-			OR
+			<h1 style="color: white">How much do you remember?</h1> 
+			Try a sample file: &nbsp; 
+			<input type="file" id="fileInput" class="hidden"><label class="standard" id="sample" for="fileInput">Sample file</label>
+			<script type="text/javascript">
+				var myLink = document.getElementById('sample');
+				myLink.onclick = function(){
+				    var script = document.createElement("script");
+				    script.src = "/short.json"; 
+				    return false;
+				}
+			</script> <!--Clicking on sample button-->
 			<div id="file-drop-area">
-				drag-n-drop here
+				Drop json files here <br> 
+				<span id="or"> Or </span>
+				<div id="upload-area">
+					<input type="file" id="fileInput" class="hidden">
+					<label class="standard" for="fileInput">Choose file</label>
+				</div>
 			</div>
 		</div>
+		
+	<div id="control">
+<div id="question-list"></div>
+	<div id="control-inside">
 
-		<div id="question-list"></div>
+		<div id="button-box">
+			<button id="playButton" style="visibility:hidden">Loading Rewind...</button><br>
+			<button id="backButton" style="visibility:hidden">Back</button>
+			<button id="nextButton" style="visibility:hidden">Next</button>
+			<div style="clear:both"></div>
+		</div>
+
 		<div id = "user-choices">
 	        <div id = "time-length">
 	            <p class = "user-text">You have <span id = "num-days" class = "user-text"></span> days of data.</p>
 	            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
-	            <!--
-	            Currently not using this. In the past, users were able to vary the length of the period of data (now it's just days)
-	            <p class = "user-text">View routes:</p>
-	            <input class = "length-radio" type="radio" name="length" value="day" checked>by Day<br>
-	            <input class = "length-radio" type="radio" name="length" value="week">by Week<br>
-	            <input class = "length-radio" type="radio" name="length" value="month">by Month<br>
-	        -->
+	        </div>
+	        <div id = "calendar">
+	            <p class = "user-text">Jump to Day<input id="datepicker" type="text" name="dates"></p>
+	        </div>
+	    </div> <!--user-choices-->
+
+	</div> <!--control-inside-->
+
+		
+</div>
+<!-- 		<div id = "user-choices">
+	        <div id = "time-length">
+	            <p class = "user-text">You have <span id = "num-days" class = "user-text"></span> days of data.</p>
+	            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
 	        </div>
 	        <div id = "calendar">
 	            <p class = "user-text">Jump to Day<input id="datepicker" type="text" name="dates"></p>
 	        </div>
 	    </div>
+
 		<div id="button-box">
 			<button id="playButton" style="visibility:hidden">Loading Rewind...</button><br>
 			<button id="backButton" style="visibility:hidden">Back</button>
-			<!--<button id="submitButton" style="visibility:hidden">Submit</button>-->
 			<button id="nextButton" style="visibility:hidden">Next</button>
 			<div style="clear:both"></div>
-		</div>
+		</div> -->
+
 		<div style="clear:both"></div>
 	</div>
+
     <div style="clear:both"></div>
 </body> 
 </html>
