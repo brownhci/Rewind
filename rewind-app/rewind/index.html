@@ -21,43 +21,182 @@
 
 	<script src="js/ext/tinycolor.js"></script>
 
-	<script src="js/random.js"></script>
-
 	<script src="js/ext/caman.cleanup.js"></script>
 	<script src="js/render-ambience.js"></script>
 	<script src="js/rewind.js"></script>
 	<!-- <script src="js/rewind-upload.js"></script> -->
+
+	<style>
+		/* The Modal (background) */
+		.modal {
+		    display: none; /* Hidden by default */
+		    position: fixed; /* Stay in place */
+		    z-index: 1; /* Sit on top */
+		    padding-top: 100px; /* Location of the box */
+		    left: 0;
+		    top: 0;
+		    width: 100%; /* Full width */
+		    height: 100%; /* Full height */
+		    overflow: auto; /* Enable scroll if needed */
+		    background-color: rgb(0,0,0); /* Fallback color */
+		    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.modal-content {
+		    background-color: #fefefe;
+		    margin: auto;
+		    padding: 20px;
+		    border: 1px solid #888;
+		    width: 80%;
+		    height: 70%;
+		}
+
+		/* The Close Button */
+		.close {
+		    color: #aaaaaa;
+		    float: right;
+		    margin-top: -10px;
+		    font-size: 28px;
+		    font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		    color: #000;
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+	</style>
 </head> 
 <body>
 
-
-
-
-
-
 	<div id="survey-wrapper">
 
-
-
-
 		<div id="upload-wrapper" style="text-align:center;">
+
 			<h1 style="color: white">How much do you remember?</h1> 
-			Try a sample file: &nbsp; 
-			<input type="file" id="fileInput" class="hidden"><label class="standard" id="sample" for="fileInput">Sample file</label>
-			<script type="text/javascript">
-				var myLink = document.getElementById('sample');
-				myLink.onclick = function(){
-				    var script = document.createElement("script");
-				    script.src = "/short.json"; 
-				    return false;
-				}
-			</script> <!--Clicking on sample button-->
+
+			<!-- Trigger/Open The Modal -->
+			<label class="standard" id="myBtn">How does this work?</label>
+
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+		
+		    <span class="close">&times;</span>
+				<div id="scroll">
+	    			Rewind expects a JSON file* in the following format:
+					<div id="code-snippet">
+						{
+						    <span id="blue">"locations"</span> : [ {
+						    <span id="blue">"timestampMs"</span> : "1467228482403",
+						    <span id="blue">"latitudeE7"</span> : 418261352,
+						    <span id="blue">"longitudeE7"</span> : -714042911,
+						    <span id="blue">"accuracy"</span> : 10,
+						    <span id="blue">"velocity"</span> : 2,
+						    <span id="blue">"heading"</span> : 286,
+						    <span id="blue">"altitude"</span> : 10,
+						    <span id="blue">"verticalAccuracy"</span> : 24
+						    }
+						    ...
+						]}
+					</div>
+
+					<br>
+
+					<span id="footnote"> *A JSON file is a file format that holds data like shown above. <br> The Rewind needs your time and location data to generate image sequence of routes that will help you remember your memory.</span> 
+
+					<br> <br>
+
+					Don't have a file that looks like that? Don't worry. It's very simple to make one! 
+
+					<br> <br>
+
+					<div style="color: #054a91; margin-left: 100px; text-align: left;"> 
+						Step 1: To generate your own JSON file, go to <a href="https://www.google.com/maps/timeline?pb">www.google.com/maps/timeline?pb </a> 
+						<br> <br>
+						Step 2: Sign in to one of your gmail accounts, and you'll be taken to a page that looks like this: 
+					</div>
+
+					<br> <br>
+
+					<img src="img/json_instructions_01.png" style="width:50%;">
+
+					<br> <br>
+
+					<div style="color: #054a91; margin-left: 100px; text-align: left;">
+						Step 3: Click on the settings gear on the bottom right corner: 
+					</div> 
+
+					<br> <br>
+
+					<img src="img/json_instructions_02.png" style="width:50%;"> <br> <br>
+
+					<div style="color: #054a91; margin-left: 100px; text-align: left;">
+					Step 4: Select "Download a copy of all your data," and you'll be taken to a page like below. <br> After ensuring that you've selected options like shown below, click "Next": </div> 
+
+					<br> <br>
+
+					<img src="img/json_instructions_03.png" style="width:60%;"> <br> <br>
+
+					<div style="color: #054a91; margin-left: 100px; text-align: left;"> Step 5: Choose ".zip" for file type, archive size "2GB," and any of the delivery method that works best for you. <br> After you hit "Create archive" button, your JSON file will be delivered to you by chosen method. Now you're all set!</div> 
+
+					<br> <br>
+
+					<img src="img/json_instructions_04.png" style="width:50%;"> <br> <br>
+
+					Once you have your JSON file ready, feel free to close out of this window then drag-and-drop <br> or "choose file" your JSON file to view your memory! 
+
+					<br> <br>
+
+					Still unsure? Try this sample file: <br><br>
+
+					<label class="standard" id="sample">
+						Sample file
+					</label>
+
+				</div>
+  			</div>
+
+			</div>
+
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("myBtn");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+			    modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+			</script> <!--modal test-->
+
 			<div id="file-drop-area">
-				Drop json files here <br> 
+				Drop JSON file here <br> 
 				<span id="or"> Or </span>
 				<div id="upload-area">
 					<input type="file" id="fileInput" class="hidden">
-					<label class="standard" for="fileInput">Choose file</label>
+					<label style="margin-left: -240px;" class="standard" for="fileInput">Choose file</label>
 				</div>
 			</div>
 		</div>

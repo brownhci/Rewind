@@ -17,6 +17,72 @@ body {
 	box-shadow: inset 0px 0px 2000px black;
 }
 
+#footnote {
+	font-size: 12px;
+	color: gray;
+}
+
+#scroll {
+	overflow: scroll;
+	height: 100%;
+	    word-wrap: break-word;
+}
+
+#myBtn {
+
+	color: #666;
+	font-family: Avenir;
+    src: url(Avenir.ttc);
+	border: 1px solid #666;
+	text-align: center;
+    padding: 6px 12px;
+    margin: auto;
+    border: 1px solid #666;
+    border-radius: 5px;
+
+}
+
+#myBtn:hover {
+	background-color: rgba(0,0,0, .3);
+	cursor: hand;
+	cursor: pointer;
+}
+
+#myBtn:active {
+
+  	transform: translateY(4px);
+}
+
+#blue {
+	color:#247fad;
+}
+#code-snippet {
+	background-color: red;
+	overflow: scroll;
+	width: 50%;
+	height: 200px;
+    padding: 1em;
+    margin: auto;
+
+    border-radius: .3em;
+    background: #272822;
+    color: #f8f8f2;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    tab-size: 3;
+    border: 0;
+    display: block;
+    font-size: 13px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+
+}
+
 #control-inside {
 	position: relative;
     margin-left: 800px;
@@ -27,6 +93,8 @@ body {
 
 #sample {
 	border: 1px solid #666;
+		cursor: hand;
+	cursor: pointer;
 }
 
 .user-text {
@@ -50,12 +118,13 @@ input {
 }
 
 .standard{
-	margin-left: -240px ;
+
 	text-align: center;
     padding: 6px 12px;
     transform: translateY(4px);
     border: 1px solid #ffffff;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .standard:hover {
@@ -72,6 +141,7 @@ span#or {
 	color: white;
 	padding: 5px;
 }
+
 #survey-wrapper {
 	position: relative;
 	width: 100%;

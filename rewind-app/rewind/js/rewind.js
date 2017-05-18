@@ -253,6 +253,32 @@ $(function() {
         handleUploadedFile(fileInput.files[0]);
     });
 
+    document.getElementById("sample").addEventListener("click", function(){
+        console.log("clicked");
+        $.getJSON( "short.json", function( data ) {
+            //handleUploadedFile(data);
+            $("#upload-wrapper").html("");
+            var reader = new FileReader();
+
+  
+                days = parseLocationJson(data);
+                for(var d in days){
+                    days[d].sort(function(a,b) {return (a.millis > b.millis) ? 1 : ((b.millis > a.millis) ? -1 : 0);});
+                }
+
+                missing_days = getMissingDays();
+                console.log(missing_days);
+
+                userChoices();
+        });
+    });
+
+    function handleDefaultFile(){
+
+    }
+
+
+
     var days;
     var currday;
 
@@ -1312,7 +1338,13 @@ $(function() {
     }
 
     function parseLocationJson(locJson) {
-        var obj = JSON.parse(locJson);
+
+        if (typeof locJson === "string" || locJson instanceof String) {
+            var obj = JSON.parse(locJson);
+        } else {
+            var obj = locJson;
+        }
+
         var results = {};
 
         obj.locations.forEach(function(location, i) {
