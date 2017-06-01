@@ -1,24 +1,25 @@
 var Caman = require('caman');
 
 function getWeather(url, callback) {
-    $.getJSON(url)
-        .done(function( data ){
-            if (data.snow == true){
-                weather = 'snow';
-            }else if (data.precipitation.precipitation > 0){
-                weather = 'rain';
-            }else {
-                data.cloudiness.forEach(function(condition){
-                    if(condition.value > 2){
-                        weather = 'cloudy';
-                    }
-                });
-            }
-            callback(weather);
-        })//still show connection errors in the console
-        .error (function( jqxhr, textstatus, error){
-            callback('normal');
-        });
+    // $.getJSON(url)
+    //     .done(function( data ){
+        var weather = 'normal';
+    //    if (Object.keys(data).length == 0){
+    //     callback(weather);
+    // }else{
+    // var val = data[0].value[0];  
+    // if (val.prec > 4){
+    //             weather = 'snow';
+    //         }else if (val.prec > 0){
+    //             weather = 'rain';
+    //         }else if (val.cloudiness > 2){
+    //     weather = 'cloudy';
+    //         }
+             callback(weather);
+    //     }})
+    //     .error (function( jqxhr, textstatus, error){
+    //         callback('normal');
+    //     });
 }
 
 
@@ -57,7 +58,7 @@ function changeHues(img, weather, season, hour) {
 
     for (var i = 0; i < data.length; i += 4) {
         var height = Math.floor((i / 4) / 620)
-        var color = [data[i], data[i+1], data[i+2]];
+        var color;
         var ref = Caman.Color.rgbToHSV(data[i], data[i+1], data[i+2])
         var winter = false;
 
@@ -69,7 +70,7 @@ function changeHues(img, weather, season, hour) {
                 color = springify(ref[0], ref[1], ref[2]);
                 break;
             case("summer"):
-                color = summerify(ref[0], ref[1], ref[2]);
+                color = springify(ref[0], ref[1], ref[2]);
                 break;
             case("fall"):
                 color = fallify(ref[0], ref[1], ref[2]);
@@ -82,8 +83,11 @@ function changeHues(img, weather, season, hour) {
                 color = saturate(color[0], color[1], color[2], -80); 
             }
         }else{
-            if (hour >= 19) color = renderAfternoon(color[0], color[1], color[2], i, height, land);
+            //console.log(hour);
+            if (hour >= 17 && hour < 19) color = renderAfternoon(color[0], color[1], color[2], i, height, land);
+        else if (hour >= 19) color = renderNight(color[0], color[1], color[2], i, height, land);
         }
+
 
         data[i] = color[0];
         data[i+1] = color[1];
@@ -135,47 +139,52 @@ function winterify(h, s, v){
 function springify(h, s, v){
     if ((h <= 0.15 && s >= 0.5 && v >= 0.5)){
         h += 0.05
-        s -= 0.2
-        v -= 0.2
+        s -= 0.25
+        v -= 0.25
     }
-    if ((h >= 0.11  && h <= 0.20) && (s > 0.3)){
+    else if ((h >= 0.11  && h <= 0.20) && (s > 0.3)){
         s += 0.3;
         v += 0.1;
     }
 
-    if ((h > 0.2 && h <= 0.3) && (s > 0.2)){ 
+    else if ((h > 0.2 && h <= 0.3) && (s > 0.2)){ 
         h -= 0.05;
         s += 0.2;
         v += 0.05;
     }
-    if ((h > 0.3 && h <=0.42) && (s > 0.2)){
+    else if ((h > 0.3 && h <=0.42) && (s > 0.2)){
         h -= 0.15
         s += 0.15;
         v += 0.05;
     }
 
-    color = Caman.Color.hsvToRGB(h, s, v) 
+    var color = Caman.Color.hsvToRGB(h, s, v);
+    color[1] = color[1] + 10;
+    color[2] = color[2] + 10;
     return color
 }
+
 
 //hand picked hsv again..
 function summerify(h, s, v){
     if ((h <= 0.15 && s >= 0.5 && v >= 0.5)){
         h += 0.05
-        s -= 0.2
-        v -= 0.2
+        s -= 0.25
+        v -= 0.25
     }
 
     if (((h >= 0.11 && h <= 0.20) && (s > 0.3)) 
                         || ((h > 0.2 && h <= 0.3) && (s > 0.2))){
      
-        h -= 0.1
-        s += 0.1
-        v -= 0.1
+        h += 0.15
+        s += 0.05
+        v -= 0.05
     }
-    color = Caman.Color.hsvToRGB(h, s, v) 
-    color[0] -= 10
-    color[1] -= 10
+
+
+    var color = Caman.Color.hsvToRGB(h, s, v) 
+    color[0] = color[0] - 10;
+    color[1] = color[1] - 10;
     return color
 }
 
