@@ -85,11 +85,63 @@ body {
 
 #control-inside {
 	position: relative;
-    margin-left: 800px;
+    margin-left: 1000px;
 }
 #control {
 	/*display: inline-block;*/
 }
+#slider{
+	/*z-index: 999*/
+	z-index: 2147483647;
+	/*width: 100px;*/
+/*	margin-left: 50px;*/
+
+	/*margin-top: 30px;
+	position: fixed;
+    /*bottom: 100px;*/
+ /* bottom: 10%;
+  /*  left: 100px;*/
+  	position: relative;
+    
+    width: 600px;
+    height: 10px;
+    margin-left: 20px;
+    top: 20px;
+}
+
+#slider-div{
+	position: fixed;
+	margin-top: 20px;
+	width: 640px;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	/*justify-content: space-between;*/
+}
+
+#slider-div button {
+	padding: 8px 16px;
+	/*margin-right: 40px;*/
+	/*margin-top: 25px;
+	margin-bottom: 10px;*/
+	border: none;
+	border-width: 1px;
+	border-color: #ccc;
+	border-style: double;
+	border-radius: 4px;
+	background-color: rgba(0,0,0,0);
+	color: white;
+	font-family: Avenir;
+    src: url(Avenir.ttc);
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+}
+
+#slider-div button:hover {
+	background-color: rgba(0,0,0, .3)
+}
+
 
 #sample {
 	border: 1px solid #666;
@@ -158,10 +210,44 @@ span#or {
 #question-list {
 	width: 640px;
 	height: 640px;
-	margin-left: 15%;
+	/*margin-left: 15%;*/
 	position: absolute;
 	float: left;
 	display: block;
+	/*visibility: hidden;*/
+}
+
+#loading-box {
+	width: 640px;
+	height: 640px;
+	/*margin-left: 15%;*/
+	position: absolute;
+	float: left;
+	display: block;
+	background-color: black;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 9999;
+	top: 3px;
+	visibility: hidden;
+	color: white;
+	font-size: 48px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+
+#video {
+	width: 700px;
+	height: 700px;
+	margin-left: 15%;
+	position: absolute;
+	float: left;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+	align-items: center;
 	/*visibility: hidden;*/
 }
 
@@ -254,7 +340,7 @@ div.hyperlapse canvas {
 }
 #button-box button {
 	padding: 8px 16px;
-	margin-right: 40px;
+	/*margin-right: 40px;*/
 	margin-top: 25px;
 	margin-bottom: 10px;
 	border: none;
@@ -281,6 +367,9 @@ div.hyperlapse canvas {
 	margin-right: 0px;
 }
 
+
+
+
 #upload-area {
 /*	margin: 10px;*/
 	height: 22px;
@@ -301,8 +390,8 @@ input#fileInput {
 
 #file-drop-area {
 	border: 3px dashed rgba(0,0,0,.3);
-	width: 350px;
-	height: 250px;
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
 	text-align: center;
 	padding-top: 130px;
@@ -328,11 +417,17 @@ input#fileInput {
 }
 
 @media screen and (min-width: 1300px) {
-    #question-list {
+    /*#question-list {
     	margin-left: 25%;
-    }
+    }*/
     #button-box{
     	/*padding-left: 15%;*/
+    }
+
+    /***/
+
+    #video {
+    	margin-left: 25%;
     }
 }
 
@@ -374,4 +469,5 @@ input#fileInput {
 .missing{
 	opacity: 0.3;
 }
+
 

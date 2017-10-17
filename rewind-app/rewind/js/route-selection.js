@@ -85,7 +85,7 @@ function pullRoutesfromLocs(period, num_routes){
         cur ++;
         prev ++;
     }
-    // console.log(routes);
+    console.log(routes);
     return routes;
 }
 
@@ -116,6 +116,9 @@ function getGoogleRoute(routes, results, i, onFinished) {
     var locations = routes[i];
     var first = locations.shift();
     var last = locations.pop();
+    if (locations.length > 20){
+        locations = locations.slice(0, 21)
+    }
 
     directions_service = new google.maps.DirectionsService();
 
@@ -127,7 +130,7 @@ function getGoogleRoute(routes, results, i, onFinished) {
                 location: googleLatLng(location)
             };
         }),
-        travelMode: google.maps.DirectionsTravelMode.WALKING
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
     };
 
     getRouteFromDirectionsService(routeRequest, 10, function(err, response) {

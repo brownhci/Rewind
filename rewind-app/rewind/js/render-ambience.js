@@ -84,7 +84,7 @@ function changeHues(img, weather, season, hour) {
             }
         }else{
             //console.log(hour);
-            if (hour >= 17 && hour < 19) color = renderAfternoon(color[0], color[1], color[2], i, height, land);
+            if (hour >= 16 && hour < 19) color = renderAfternoon(color[0], color[1], color[2], i, height, land);
         else if (hour >= 19) color = renderNight(color[0], color[1], color[2], i, height, land);
         }
 
@@ -280,6 +280,7 @@ function changeWeather (curWeather, animate, audio){
     switch (curWeather){
         case 'rain':
             $('#rainLayer').show();
+            console.log("rainLayer")
             audio.play();
             $('#snowLayer').hide();
             clearInterval(animate);

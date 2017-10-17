@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+	<title>View Surrouding</title> 
+    
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="js/ext/jquery-ui-1.11.3/jquery-ui.css" />
+	<!-- google map api? -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ2JrxoOulDQJM_qW5tp8Zw69eJupcTh4&v=3.exp" type="text/javascript"></script> 
+    <script src="js/ext/jquery.js"></script>
+    <script src="js/ext/jquery-visibility.js"></script>
+    <script src="js/ext/underscore.js"></script>
+	<script src="js/pan-view.js"></script>
+	<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #pano {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+<body>
+<div id="pano"></div>
+</body> 
+
+
+	<script>
+	var url = window.location.href;
+	url = new URL(url.toString());
+	var lat = url.searchParams.get("lat");
+	var lon = url.searchParams.get("lon")
+	//console.log("lat: " + lat + "lon: " + lon + "heading: " + heading + "pitch: " +pitch );
+	var panorama = panView({
+		lat: lat,
+		lon: lon
+	})
+
+	</script>
+</html>
