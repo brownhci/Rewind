@@ -89,6 +89,7 @@ body {
 }
 #control {
 	/*display: inline-block;*/
+	margin-top: 50px;
 }
 #slider{
 	/*z-index: 999*/
@@ -495,6 +496,7 @@ input#fileInput {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 20px;
 }
 
 /* The Close Button */
