@@ -44,35 +44,37 @@
 <body>
 	<!--<div id="slider"></div>-->
 
+	<div id="header">
+		<a href="#" class="header-link">About</a>
+		<a href="#" class="header-link">Code</a>
+		<a href="#" class="header-link">Team</a>
+	</div> <!--header-->
+
 	<div id="file-drop-area">
 		<div id="upload-area">
-		<input type="file" id="fileInput" class="hidden">
-		<div id="survey-wrapper">
-
-		<div id="upload-wrapper" style="text-align:center;">
-
-			<h1 style="color: white">How much do you remember?</h1> 
-						Drop JSON file into this page <br> 
-<!-- 				<span id="or"> Or </span>
-				<div id="upload-area">
-					<input type="file" id="fileInput" class="hidden">
-					<label style="margin-left: -240px;" class="standard" for="fileInput">Choose file</label>
-				</div> -->
-				<br><span id="or"> Or </span>
+			<input type="file" id="fileInput" class="hidden">
+			<div id="survey-wrapper">
+				<div id="upload-wrapper" style="text-align:center;">
+					<h1 style="color: white">How much do you remember?</h1> 
+								Drop JSON file into this page <br> 
+		<!-- 				<span id="or"> Or </span>
+						<div id="upload-area">
+							<input type="file" id="fileInput" class="hidden">
+							<label style="margin-left: -240px;" class="standard" for="fileInput">Choose file</label>
+						</div> -->
+					<br><span id="or"> Or </span>
 					<br><br><label class="standard" id="sample">Try a sample file</label>
 					<br><br><label class="standard" id="instructions">Need help?</label>
-			</div>
-		</div>
-		</div>
-		</div>
+				</div> <!--upload-wrapper-->
+			</div> <!--survey-wrapper-->
+		</div> <!--upload-area-->
+	</div> <!--file-drop-area-->
 
 	<!-- The Modal -->
 	<div id="instructions-modal" class="modal">
 
 	  <!-- Modal content -->
 	  <div class="modal-content">
-	    
-	    <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
 
 	    <div class="slideshow-container">
 	    <span class="close">&times;</span>
@@ -182,11 +184,7 @@
 		</div>
 
 	  </div>
-
-	</div>
-
-
-
+	</div> <!--instructions-modal-->
 
 	<div id="control">
 		<div id="video">
@@ -212,7 +210,7 @@
 		            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
 		        </div>
 		        <div id = "calendar">
-		            <p class = "user-text">Jump to Day<input id="datepicker" type="text" name="dates"></p>
+		            <p class = "user-text">Jump to Day:<input id="datepicker" type="text" name="dates"></p>
 		        </div>
 		    </div> <!--user-choices-->
 
@@ -220,10 +218,5 @@
 		</div> <!--control-inside-->
 	</div> <!--control-->
 
-
-		<div style="clear:both"></div>
-	</div>
-
-    <div style="clear:both"></div>
 </body> 
 </html>

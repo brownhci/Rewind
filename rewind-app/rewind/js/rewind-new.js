@@ -90,6 +90,7 @@ function initMap(latVal, lngVal, response) {
  }
 
   function createHyperlapse(pano) {
+        console.log('createHyperlapse called')
         //console.log('createHyperlapse')
         $(pano).html("<img src='img/loading.gif' style='width:50px; margin:275px 275px'></img>");
         $("#playButton").html("&#9658");
@@ -109,7 +110,7 @@ function initMap(latVal, lngVal, response) {
                 routeSequence.progress(function(p){
                     progressVal = parseInt(p * 100 / GRouteResponse.length);
                     //if (progressVal != tmppv){
-                        $("#loading-box").html("Loading Rewind " + progressVal + "% completed" );
+                        $("#loading-box").html("Loading Rewind: " + progressVal + "% completed" );
                     //}
                     //tmppv = progressVal;
                 })
@@ -172,18 +173,22 @@ function initMap(latVal, lngVal, response) {
                             globPlayer.play();
                             playState = 1;
                         }else if (playState == 1){
-                            $("#playButton").html("&#9658"); // play rewind
+                            $("#playButton").html("&#9658"); // switch icon to play button
                             player.pause();
                             playState = 2;
                         }else{
-                            sliderVal = globPlayer.getProgress();
-                            console.log(sliderVal);
+                            if (globPlayer.getProgress()==null) { // check after switching dates to make sure play button can hit after previous rewind is paused
+                                sliderVal = 0;
+                            }
+                            else {
+                                sliderVal = globPlayer.getProgress();
+                            }
+                            
                             globPlayer.setProgress(sliderVal);
                             $("#playButton").html("&#10073;"+" "+"&#10073"); // pause rewind
                             globPlayer.play();
                             playState = 1;
                         }
-
                     });
 
                     //ambiance = new Audio("./audio/thunder.mp3");
@@ -389,7 +394,7 @@ function initMap(latVal, lngVal, response) {
                 $("#panButton").css("borderColor","grey")
 
                 globPlayer.pause();
-                globPlayer = null;
+             //   globPlayer = null;
                 $( "#slider" ).slider( "disable" );
                 $( "#slider" ).slider( "value", 0 );
 

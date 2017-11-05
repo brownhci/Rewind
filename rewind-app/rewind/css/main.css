@@ -89,7 +89,6 @@ body {
 }
 #control {
 	/*display: inline-block;*/
-	margin-top: 50px;
 }
 #slider{
 	/*z-index: 999*/
@@ -201,7 +200,7 @@ span#or {
 	padding: 20px 0px;
 	height: 450px;
 	
-	margin-top: 100px;
+	margin-top: 50px;
 	/*box-shadow: 0 0 20px rgba(0,0,0,.2);*/
 
 	font-family: Avenir;
@@ -375,8 +374,8 @@ div.hyperlapse canvas {
 /*	margin: 10px;*/
 	height: 22px;
 	text-align: center;
-	  margin: 0px auto;
-	  margin-top: 10px;
+	margin: 0px auto;
+	margin-top: 10px;
 }
 
 .hidden {
@@ -389,6 +388,11 @@ input#fileInput {
 
 }
 
+
+#upload-wrapper {
+/*	margin: 10px;*/
+}
+
 #file-drop-area {
 	border: 3px dashed rgba(0,0,0,.3);
 	width: 100%;
@@ -398,6 +402,8 @@ input#fileInput {
 	padding-top: 130px;
 	margin-top: 20px;
 	color: white;
+	width: 75%;
+	height: 65%;
 }
 
 #file-drop-area.dragging {
@@ -618,3 +624,23 @@ input#fileInput {
 	cursor: pointer;
 }
 
+
+#header {
+	top:0px;
+	display: flex;
+	justify-content: flex-end;
+	height: 50px;
+	padding: 10px;
+}
+
+.header-link {
+	text-decoration: none;
+	font-family: Avenir;
+	src: url(Avenir.ttc);
+	color: gray;
+	padding: 20px;
+}
+
+.header-link:hover {
+	color: lightgray;
+}

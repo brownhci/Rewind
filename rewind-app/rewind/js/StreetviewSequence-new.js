@@ -126,7 +126,7 @@
          */
         function draw() {
             var p = tween.progress();
-            console.log(p)
+            console.log(p) /*EDITED OUT FOR NOW */
             //console.log(p);
             var idx = Math.round(p * (images.length - 1));
             images[idx].done(function (img) {
