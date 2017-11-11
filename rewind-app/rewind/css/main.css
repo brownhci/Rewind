@@ -458,6 +458,8 @@ input#fileInput {
     border-radius: 15px;
     font-family: Avenir;
 	src: url(Avenir.ttc);
+
+	
 }
 
 #datepicker{
@@ -680,5 +682,14 @@ figcaption {
 /* about stuff */
 #about-content {
 	padding: 40px;
+}
+
+
+#calendar {
+	position: relative;
+	width: 50px;
+	background-color: pink;
+	padding: 10px;
+	margin: 10px;
 }
 

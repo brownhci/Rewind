@@ -4,6 +4,10 @@
 
 
 $(function() {
+    $(document).ready(function(){
+        $("#instructions").trigger('click'); 
+    });
+    
     var Caman = require('caman');
     var animate;
 
@@ -69,7 +73,6 @@ $(function() {
     ]
   }
 ];
-
 
 function initMap(latVal, lngVal, response) {
         directionsService = new google.maps.DirectionsService;
