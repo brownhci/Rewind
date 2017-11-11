@@ -45,9 +45,9 @@
 	<!--<div id="slider"></div>-->
 
 	<div id="header">
-		<a href="#" class="header-link">About</a>
-		<a href="#" class="header-link">Code</a>
-		<a href="#" class="header-link">Team</a>
+		<a href="#" class="header-link" id="aboutLink">About</a>
+		<a href="https://github.com/brownhci/Rewind" target="_blank" class="header-link">Code</a>
+		<a href="#" class="header-link" id="teamLink">Team</a>
 	</div> <!--header-->
 
 	<div id="file-drop-area">
@@ -55,7 +55,7 @@
 			<input type="file" id="fileInput" class="hidden">
 			<div id="survey-wrapper">
 				<div id="upload-wrapper" style="text-align:center;">
-					<h1 style="color: white">How much do you remember?</h1> 
+					<h1 style="color: white">Rewind</h1> 
 								Drop JSON file into this page <br> 
 		<!-- 				<span id="or"> Or </span>
 						<div id="upload-area">
@@ -70,6 +70,74 @@
 		</div> <!--upload-area-->
 	</div> <!--file-drop-area-->
 
+
+
+	<!-- About Modal -->
+	<div id="aboutModal" class="modal">
+	  <!-- About Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	    <p id="about-content">When you travel for vacation, a roadtrip, to visit friends, or to go to a park, you want to re-experience it again by writing in a journal or taking photos. But that one snapshot is only a tiny part of traveling; 95% of traveling experience is in transit: the windy stroll from the Eiffel Tower to the Louvre, the sounds when you are driving on the Autobahn, or the pouring rain on the bridge. Geolocation data that can be automatically tracked on a smartphone can be used to figure out the weather at every moment, photos from Flickr and Google Street View at every step, and even your mode of transportation and nearby geographical features. Rewind takes that and applies the weather conditions to the photos to recreate what you saw, and combines them with sounds based on your mode of transportation of nearby geographical features. So all you have to do is enable location tracking on your phone to rewind and re-experience the past.</p>
+	  </div>
+	</div> <!--aboutModal-->
+
+	<!-- Team Modal -->
+	<div id="teamModal" class="modal">
+	  <!-- About Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	    <center><h1 id="modal-header">OUR TEAM</h1></center>
+	    <div id="team-pictures">
+			<figure>
+              <img class="circular--square" src="img/meow.png" />
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <img class="circular--square" src="img/meow.png" />
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <img class="circular--square" src="img/meow.png" />
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <img class="circular--square" src="img/meow.png" />
+              <figcaption>Name here</figcaption>
+            </figure>  
+        </div> <!--team-pictures-->  
+        <center><h1 id="modal-header">PAST MEMBERS</h1></center>
+        <div id="past-team-pictures">
+			<figure>
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <figcaption>Name here</figcaption>
+            </figure>
+
+            <figure>
+              <figcaption>Name here</figcaption>
+            </figure>  
+
+            <figure>
+              <figcaption>Name here</figcaption>
+            </figure>  
+
+            <figure>
+              <figcaption>Name here</figcaption>
+            </figure>  
+        </div> <!--past-team-pictures-->  
+
+	  </div>
+	</div> <!--teamModal-->
+
 	<!-- The Modal -->
 	<div id="instructions-modal" class="modal">
 
@@ -79,18 +147,17 @@
 	    <div class="slideshow-container">
 	    <span class="close">&times;</span>
 		  <div class="mySlides fade">
-		    <div class="numbertext">1 / 6</div>
 		    <div class="text">
-		    	In order to use Rewind, you will have to have location history data from Google Maps. If you’d like to enable location tracking, click <a href="https://support.google.com/accounts/answer/3118687?hl=en">here</a> to do so. If you already have tracking enabled, click on the right arrow ( > ) to learn how to retrieve your data! 
+		    	<h1>To use Rewind,</h1>
+		    	you will have to have location history data from Google Maps. If you’d like to enable location tracking, click <a href="https://support.google.com/accounts/answer/3118687?hl=en">here</a> to do so. If you already have tracking enabled, click on the right arrow ( > ) to learn how to retrieve your data! 
 		    	<p>
 				To exit this tutorial, just click on the X button at the top right at any time. 
 			</div>
 		  </div>
 
 		  <div class="mySlides fade">
-		    <div class="numbertext">2 / 6</div>
 		    <div class="text">
-		    	Step 1:
+		    	<h1>Step 1</h1>
 		    	<p>
 				Click <a href="https://www.google.com/maps/timeline?pb">here</a> and sign-in to the Google account associated with your location history. You should be taken to this page:
 				<p>
@@ -101,9 +168,8 @@
 		  </div>
 
 		  <div class="mySlides fade">
-		    <div class="numbertext">3 / 6</div>
 		    <div class="text">
-		    	Step 2:
+		    	<h1>Step 2</h1>
 		    	<p>
 				Click on the Settings icon in the bottom right hand corner. 
 				Select ‘Download a copy of all your data.’
@@ -113,9 +179,8 @@
 		  </div>
 
 		  <div class="mySlides fade">
-		    <div class="numbertext">4 / 6</div>
 		    <div class="text">
-		    	Step 3: 
+		    	<h1>Step 3</h1>
 		    	<p>
 				Select ‘Location History,’ and make sure that ‘JSON’ is selected as shown below.
 				<p>
@@ -131,9 +196,8 @@
 		  </div>
 
 		  <div class="mySlides fade">
-		    <div class="numbertext">5 / 6</div>
 		    <div class="text">
-		    	Step 4: 
+		    	<h1>Step 4</h1>
 		    	<p>
 		    	Choose ‘.zip’ for file type and ‘2GB’ for archive size. You may choose the delivery method that works best for you. 
 
@@ -148,9 +212,8 @@
 		  </div>
 
 		  <div class="mySlides fade">
-		    <div class="numbertext">6 / 6</div>
 		    <div class="text">
-		    	Step 5: 
+		    	<h1>Step 5</h1>
 		    	<p>
 		    	Open your downloaded zip file to retrieve the JSON file needed for Rewind. Double click on the .zip file to unzip it, and navigate to the “Location History” folder. Your Location History data resides in this folder! 
 
@@ -210,6 +273,7 @@
 		            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
 		        </div>
 		        <div id = "calendar">
+		        	<!--<div id="datepicker" style="text-align:center"></div>-->
 		            <p class = "user-text">Jump to Day:<input id="datepicker" type="text" name="dates"></p>
 		        </div>
 		    </div> <!--user-choices-->

@@ -265,11 +265,57 @@ function initMap(latVal, lngVal, response) {
     
     /** MODAL STUFF**/
 
+    // about link modal //
+
+    // Get the modal
+    var aboutModal = document.getElementById('aboutModal');
+
+    // Get the button that opens the modal
+    var aboutBtn = document.getElementById("aboutLink");
+
+    // Get the <span> element that closes the modal
+    var aboutSpan = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    aboutBtn.onclick = function() {
+        aboutModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    aboutSpan.onclick = function() {
+        aboutModal.style.display = "none";
+    }
+
+
+    // team link modal //
+
+    // Get the modal
+    var teamModal = document.getElementById('teamModal');
+
+    // Get the button that opens the modal
+    var teamBtn = document.getElementById("teamLink");
+
+    // Get the <span> element that closes the modal
+    var teamSpan = document.getElementsByClassName("close")[1];
+
+    // When the user clicks on the button, open the modal 
+    teamBtn.onclick = function() {
+        teamModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    teamSpan.onclick = function() {
+        teamModal.style.display = "none";
+    }
+
+
+
+
     // Get the modal
     var modal = document.getElementById('instructions-modal');
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[2];
 
     document.getElementById("instructions").addEventListener("click", showInstructions);
 
@@ -287,6 +333,12 @@ function initMap(latVal, lngVal, response) {
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+        if (event.target == aboutModal) {
+            aboutModal.style.display = "none";
+        }
+        if (event.target == teamModal) {
+            teamModal.style.display = "none";
         }
     }
 
