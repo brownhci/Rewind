@@ -213,9 +213,8 @@ span#or {
 	width: 640px;
 	height: 640px;
 	/*margin-left: 15%;*/
-	position: absolute;
+	/*position: absolute;*/
 	float: left;
-	display: block;
 	/*visibility: hidden;*/
 }
 
@@ -224,8 +223,7 @@ span#or {
 	height: 640px;
 	/*margin-left: 15%;*/
 	position: absolute;
-	float: left;
-	display: block;
+	/*float: left;*/
 	background-color: black;
 	background: rgba(0, 0, 0, 0.6);
 	z-index: 9999;
@@ -234,6 +232,7 @@ span#or {
 	color: white;
 	font-size: 48px;
 	text-align: center;
+
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -276,7 +275,7 @@ span#or {
 
 img.play-icon{
 	z-index: 101;
-	display: none;
+/*	display: none;*/
 	cursor: pointer;
 }
 

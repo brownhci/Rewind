@@ -126,8 +126,8 @@
          */
         function draw() {
             var p = tween.progress();
-            console.log(p) /*EDITED OUT FOR NOW */
-            //console.log(p);
+
+        //    console.log(p) /*EDITED OUT FOR NOW */
             var idx = Math.round(p * (images.length - 1));
             images[idx].done(function (img) {
                 curImg = img;
@@ -135,6 +135,12 @@
             });
 
             updateSlider(idx, images.length);
+
+            if (sliderVal>=0.97) { // once rewind reaches end, change play button and replay rewind if user clicks play button
+                console.log('done')
+                $("#playButton").trigger('click'); 
+                sliderVal=0
+            }
         }
 
 

@@ -4,10 +4,10 @@
 
 
 $(function() {
-    $(document).ready(function(){
+   /* $(document).ready(function(){
         $("#instructions").trigger('click'); 
-    });
-    
+    });*/
+
     var Caman = require('caman');
     var animate;
 
@@ -152,6 +152,8 @@ function initMap(latVal, lngVal, response) {
                     
                     $("#slider").slider("enable");
                     
+                    $("#slider-div").show();
+                    console.log('done loading')
                     $("#playButton").visible();
                     $("#playButton").html("&#9658");
                     $("#playButton").css("background-color", "#009aff");
@@ -188,11 +190,27 @@ function initMap(latVal, lngVal, response) {
                             }
                             
                             globPlayer.setProgress(sliderVal);
+                            /*if (sliderVal==1) {
+                                sliderVal = 0
+                                globPlayer.setProgress(sliderVal);
+                            }*/
                             $("#playButton").html("&#10073;"+" "+"&#10073"); // pause rewind
                             globPlayer.play();
                             playState = 1;
                         }
                     });
+
+                    $( "#slider" ).on( "slide", function( event, ui ) {
+                        console.log(playState)
+                    } );
+
+                    $( "#slider" ).on( "slidestop", function( event, ui ) {
+                        if (playState==1) {
+                            console.log(playState)
+                            globPlayer.setProgress(sliderVal);
+                            globPlayer.play();
+                        }
+                    } );
 
                     //ambiance = new Audio("./audio/thunder.mp3");
                     // ambiance.play();
@@ -234,6 +252,11 @@ function initMap(latVal, lngVal, response) {
     dragArea.ondragover = function () { this.className = 'dragging'; return false; };
     dragArea.ondragend = dragArea.ondragleave = function () { this.className = ''; return false; };
     dragArea.ondrop = function (e) {
+        $("#upload-header").html('File loading...');
+        $('#or').hide()
+        $('#instructions').hide()
+        $('#sample').hide()
+        $('#upload-wrapper-content').hide()
         this.className = '';
         e.preventDefault();
         handleUploadedFile(e.dataTransfer.files[0]);
@@ -439,7 +462,8 @@ function initMap(latVal, lngVal, response) {
                 $("#playButton").prop("disabled", true);
                 //$("#playButton").css("background-color", "white");
                 //$("#playButton").css("color", "#009aff");
-                $("#playButton").css("background-color", "##388ac1");
+                $("#slider-div").hide();
+                $("#playButton").css("background-color", "#5190ba");
                 $("#playButton").css("color", "#d3d3d3");
                 $("#playButton").css("borderColor", "#d3d3d3");
                 $("#playButton").html("&#9658");
@@ -882,7 +906,7 @@ function initMap(latVal, lngVal, response) {
 
             $("#loading-box").html("Loading Rewind...");
             $("#loading-box").visible();
-            $("#loading-box").css("display", "flex");
+            $("#loading-box").css("display", "-webkit-flex");
             $("#loading-box").css( "zIndex", 9999 )
             console.log($("#loading-box").html())
             $(".play-icon").hide();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html> 
 <head> 
-	<title>A trip down the memory lane...</title> 
+	<title>Rewind: A Trip Down Memory Lane</title> 
     
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -55,16 +55,17 @@
 			<input type="file" id="fileInput" class="hidden">
 			<div id="survey-wrapper">
 				<div id="upload-wrapper" style="text-align:center;">
-					<h1 style="color: white">Rewind</h1> 
-								Drop JSON file into this page <br> 
+					<h1 id="upload-header" style="color: white">Rewind</h1> 
+							<p id="upload-wrapper-content">	Drop JSON file into this page </p>
 		<!-- 				<span id="or"> Or </span>
 						<div id="upload-area">
 							<input type="file" id="fileInput" class="hidden">
 							<label style="margin-left: -240px;" class="standard" for="fileInput">Choose file</label>
 						</div> -->
-					<br><span id="or"> Or </span>
+					<span id="or"> Or </span>
+			
+					<br><br><label class="standard" id="instructions">What is Rewind?</label>
 					<br><br><label class="standard" id="sample">Try a sample file</label>
-					<br><br><label class="standard" id="instructions">Need help?</label>
 				</div> <!--upload-wrapper-->
 			</div> <!--survey-wrapper-->
 		</div> <!--upload-area-->
@@ -89,50 +90,52 @@
 	    <center><h1 id="modal-header">OUR TEAM</h1></center>
 	    <div id="team-pictures">
 			<figure>
-              <img class="circular--square" src="img/meow.png" />
-              <figcaption>Name here</figcaption>
+              <!--<img class="circular--square" src="img/meow.png" />-->
+              <figcaption><a href="http://13hsha.github.io/me">Han Sha</a></figcaption>
             </figure>
 
             <figure>
-              <img class="circular--square" src="img/meow.png" />
-              <figcaption>Name here</figcaption>
+              <!--<img class="circular--square" src="img/meow.png" />-->
+              <figcaption><a href="http://www.neillytan.com/">Neilly Tan</a></figcaption>
             </figure>
 
             <figure>
-              <img class="circular--square" src="img/meow.png" />
-              <figcaption>Name here</figcaption>
+              <!--<img class="circular--square" src="img/meow.png" />-->
+              <figcaption>Kelly Wang</figcaption>
             </figure>
 
             <figure>
-              <img class="circular--square" src="img/meow.png" />
-              <figcaption>Name here</figcaption>
+              <!--<img class="circular--square" src="img/meow.png" />-->
+              <figcaption><a href="http://jeffhuang.com/">Jeff Huang</a></figcaption>
+            </figure>  
+
+            <figure>
+              <!--<img class="circular--square" src="img/meow.png" />-->
+              <figcaption>Philip Hinch</figcaption>
             </figure>  
         </div> <!--team-pictures-->  
         <center><h1 id="modal-header">PAST MEMBERS</h1></center>
         <div id="past-team-pictures">
 			<figure>
-              <figcaption>Name here</figcaption>
+              <figcaption>Eda Celen</figcaption>
             </figure>
 
             <figure>
-              <figcaption>Name here</figcaption>
+              <figcaption>Phucanh Tran</figcaption>
             </figure>
 
             <figure>
-              <figcaption>Name here</figcaption>
+              <figcaption><a href="http://lindakpark.com/">Linda Park</a></figcaption>
             </figure>
 
             <figure>
-              <figcaption>Name here</figcaption>
+              <figcaption>Jiahui Li</figcaption>
             </figure>  
 
             <figure>
-              <figcaption>Name here</figcaption>
+              <figcaption>Prateek Arora</figcaption>
             </figure>  
 
-            <figure>
-              <figcaption>Name here</figcaption>
-            </figure>  
         </div> <!--past-team-pictures-->  
 
 	  </div>
@@ -146,10 +149,13 @@
 
 	    <div class="slideshow-container">
 	    <span class="close">&times;</span>
+
 		  <div class="mySlides fade">
 		    <div class="text">
-		    	<h1>To use Rewind,</h1>
-		    	you will have to have location history data from Google Maps. If you’d like to enable location tracking, click <a href="https://support.google.com/accounts/answer/3118687?hl=en">here</a> to do so. If you already have tracking enabled, click on the right arrow ( > ) to learn how to retrieve your data! 
+		    	<h1>Welcome to Rewind!</h1>
+		    	Rewind is a web application that takes your Google location history data and creates Rewinds, videos that document the routes you took and places you were each day. 
+		    	<p>
+		    	To use Rewind, you will have to already have existing location history data from Google Maps. If you already have tracking enabled, click on the right arrow ( > ) to learn how to retrieve your data. Otherwise, if you’d like to enable location tracking, click <a href="https://myaccount.google.com/activitycontrols" target="_blank">here</a> and scroll down to the "Location History" section to do so; since this app requires pre-existing location history data, if you haven't had location history tracking enabled you can close out of this tutorial and use the sample file provided. 
 		    	<p>
 				To exit this tutorial, just click on the X button at the top right at any time. 
 			</div>
@@ -159,7 +165,7 @@
 		    <div class="text">
 		    	<h1>Step 1</h1>
 		    	<p>
-				Click <a href="https://www.google.com/maps/timeline?pb">here</a> and sign-in to the Google account associated with your location history. You should be taken to this page:
+				Click <a href="https://www.google.com/maps/timeline?pb" target="_blank">here</a> and sign-in to the Google account associated with your location history. You should be taken to this page:
 				<p>
 
 				<img class="instructionsimage" src="img/instructions/Picture1.png">
@@ -269,8 +275,8 @@
 
 			<div id = "user-choices">
 		        <div id = "time-length">
-		            <p class = "user-text">You have <span id = "num-days" class = "user-text"></span> days of data.</p>
-		            <p class = "user-text">This route is from <span id = "route-date" class = "user-text"></span></p>
+		            <p class = "user-text">You have <span id = "num-days" class = "user-text"></span> days of location history data.</p>
+		            <p class = "user-text">This Rewind is from <span id = "route-date" class = "user-text"></span></p>
 		        </div>
 		        <!--<div id = "calendar">-->
 		            <p class = "user-text">Jump to Day:<input id="datepicker" type="text" name="dates"></p>
