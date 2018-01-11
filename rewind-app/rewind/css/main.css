@@ -94,7 +94,7 @@ body {
 
 #slider{
 	/*z-index: 999*/
-	z-index: 2147483647;
+	z-index: 998;
 	/*width: 100px;*/
 /*	margin-left: 50px;*/
 
@@ -112,8 +112,9 @@ body {
 }
 
 #slider-div{
-	position: fixed;
-	margin-top: 20px;
+	/*position: fixed;*/
+	padding-top: 25px;
+	/*margin-top: 20px;*/
 	width: 640px;
 	height: 50px;
 	display: flex;
@@ -226,7 +227,7 @@ span#or {
 	/*float: left;*/
 	background-color: black;
 	background: rgba(0, 0, 0, 0.6);
-	z-index: 9999;
+	z-index: 997;
 	top: 3px;
 	visibility: hidden;
 	color: white;
@@ -248,18 +249,21 @@ span#or {
 	margin-left: 15%;
 	position: absolute;
 	float: left;
-	display: flex;
-	flex-direction: column-reverse;
+	/*display: flex;
+	/*flex-direction: column-reverse;
 	justify-content: space-between;
+	*/
+	flex-direction: column;
 	align-items: center;
 	/*visibility: hidden;*/
 }
 
 .location-questions > .image-pano {
 	float: left;
-	margin-top: -75px;
+	margin-top: -15px;
 	box-shadow: 0 5px 10px rgba(0,0,0,.3);
 	height: 640px;
+	z-index: 99;
 }
 
 .image-pano {
@@ -493,7 +497,7 @@ input#fileInput {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -635,7 +639,8 @@ input#fileInput {
 	top:0px;
 	display: flex;
 	justify-content: flex-end;
-	height: 50px;
+	/*height: 50px;*/
+	height: 5%;
 	padding: 10px;
 }
 
@@ -653,7 +658,6 @@ input#fileInput {
 
 .modal-content {
 	position: relative;
-	z-index: 100000;
 	font-family: Avenir;
     src: url(Avenir.ttc);
 }

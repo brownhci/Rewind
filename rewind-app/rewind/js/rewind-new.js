@@ -863,7 +863,7 @@ function initMap(latVal, lngVal, response) {
         var $resDiv = $("#question-list");
         questionsHtml = "<canvas id='rainLayer' width='640' height='640' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
         + "<canvas id='snowLayer' width='640' height='640' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
-        + "<img class='play-icon' src='img/play.png' style='position:absolute; top:0px; left:0px; width:100px; margin:32% 42%;'>"
+        + "<img class='play-icon' src='img/play.png' style='position:absolute; top:0px; left:0px; width:100px; margin:37% 40%;'>"
         + questionsHtml;
         $resDiv.html(questionsHtml);
         console.log($resDiv)
@@ -907,7 +907,7 @@ function initMap(latVal, lngVal, response) {
             $("#loading-box").html("Loading Rewind...");
             $("#loading-box").visible();
             $("#loading-box").css("display", "-webkit-flex");
-            $("#loading-box").css( "zIndex", 9999 )
+            $("#loading-box").css( "zIndex", 998 )
             console.log($("#loading-box").html())
             $(".play-icon").hide();
 
