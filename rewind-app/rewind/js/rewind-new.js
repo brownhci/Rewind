@@ -4,9 +4,24 @@
 
 
 $(function() {
-   /* $(document).ready(function(){
-        $("#instructions").trigger('click'); 
-    });*/
+
+    // resizes video based on user's screensize
+    var panosize = Math.ceil(screen.height/1050 * 640);
+    var pano_element_IDs = ["slider-div", "question-list", "loading-box", "video"];
+    var pano_element_classes = ["location-questions", "image-pano"];
+
+    for (i = 0; i < pano_element_IDs.length; i++) {
+        pano_element = pano_element_IDs[i];
+        document.getElementById(pano_element).style.setProperty('--panosize', panosize + 'px');
+    }
+
+    for (i = 0; i < pano_element_classes.length; i++) {
+        pano_element = pano_element_classes[i];
+        var els = document.getElementsByClassName(pano_element);
+        for (j = 0; j < els.length; j++) {
+            els[j].style.setProperty('--panosize', panosize + 'px');
+        }
+    }
 
     var Caman = require('caman');
     var animate;
@@ -16,8 +31,8 @@ $(function() {
     TIMEZONE_API = "https://maps.googleapis.com/maps/api/timezone/json?key=" + API_KEY + "&location={{LAT}},{{LON}}&timestamp={{MILLIS}}";
 
     var ambiance = null;
-    var panoWidth  = 640;
-    var panoHeight = 640;
+    var panoWidth  = panosize;
+    var panoHeight = panosize;
     var imageIndex = 0;
     var urls;
     var routes_for_the_day = [];
@@ -413,7 +428,7 @@ function initMap(latVal, lngVal, response) {
     /*****/
 
     function handleDefaultFile(){
-        $.getJSON( "short.json", function( data ) {
+        $.getJSON( "history.json", function( data ) {
                 days = parseLocationJson(data);
                 //console.log(data);
             for(var d in days){
@@ -861,9 +876,9 @@ function initMap(latVal, lngVal, response) {
         //});
 
         var $resDiv = $("#question-list");
-        questionsHtml = "<canvas id='rainLayer' width='640' height='640' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
-        + "<canvas id='snowLayer' width='640' height='640' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
-        + "<img class='play-icon' src='img/play.png' style='position:absolute; top:0px; left:0px; width:100px; margin:37% 40%;'>"
+        questionsHtml = "<canvas id='rainLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
+        + "<canvas id='snowLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
+        + "<img class='play-icon' src='img/play.png' style='position:absolute; top:0px; left:0px; width:100px; margin:40% 40%;'>"
         + questionsHtml;
         $resDiv.html(questionsHtml);
         console.log($resDiv)

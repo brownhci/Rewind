@@ -1,3 +1,7 @@
+:root {
+  --panosize: 640px;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -105,7 +109,8 @@ body {
   /*  left: 100px;*/
   	position: relative;
     
-    width: 600px;
+    width: calc(var(--panosize) - 40px);
+    /*width: 600px;*/
     height: 10px;
     margin-left: 20px;
     top: 20px;
@@ -115,7 +120,7 @@ body {
 	/*position: fixed;*/
 	padding-top: 25px;
 	/*margin-top: 20px;*/
-	width: 640px;
+	width: var(--panosize);
 	height: 50px;
 	display: flex;
 	flex-direction: row;
@@ -123,7 +128,7 @@ body {
 }
 
 #slider-div button {
-	padding: 8px 16px;
+	/*padding: 8px 16px;
 	/*margin-right: 40px;*/
 	/*margin-top: 25px;
 	margin-bottom: 10px;*/
@@ -211,8 +216,8 @@ span#or {
 }
 
 #question-list {
-	width: 640px;
-	height: 640px;
+	width: var(--panosize);
+	height: var(--panosize);
 	/*margin-left: 15%;*/
 	/*position: absolute;*/
 	float: left;
@@ -220,8 +225,8 @@ span#or {
 }
 
 #loading-box {
-	width: 640px;
-	height: 640px;
+	width: var(--panosize);
+	height: var(--panosize);
 	/*margin-left: 15%;*/
 	position: absolute;
 	/*float: left;*/
@@ -244,8 +249,8 @@ span#or {
 
 
 #video {
-	width: 700px;
-	height: 700px;
+	width: var(--panosize);
+	height: var(--panosize);
 	margin-left: 15%;
 	position: absolute;
 	float: left;
@@ -262,7 +267,7 @@ span#or {
 	float: left;
 	margin-top: -15px;
 	box-shadow: 0 5px 10px rgba(0,0,0,.3);
-	height: 640px;
+	height: var(--panosize);
 	z-index: 99;
 }
 
