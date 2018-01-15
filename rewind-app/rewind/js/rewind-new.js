@@ -109,11 +109,13 @@ function initMap(latVal, lngVal, response) {
 
   function createHyperlapse(pano) {
         console.log('createHyperlapse called')
-        //console.log('createHyperlapse')
         $(pano).html("<img src='img/loading.gif' style='width:50px; margin:275px 275px'></img>");
         $("#playButton").html("&#9658");
         
         var gResults = [];
+
+        console.log('createHyperlapse called 2')
+        console.log(gResults)
             //getGoogleRoute(routes, gResults, 0, function() {
                 var routeSequence = StreetviewSequence($(pano), {
                     //route: mergeGoogleResponses(gResults),
@@ -125,7 +127,12 @@ function initMap(latVal, lngVal, response) {
                     key: API_KEY,
                 });
 
+                console.log('routeSequence:')
+                console.log(routeSequence)
+
                 routeSequence.progress(function(p){
+                    console.log(GRouteResponse);
+
                     progressVal = parseInt(p * 100 / GRouteResponse.length);
                     //if (progressVal != tmppv){
                         $("#loading-box").html("Loading Rewind: " + progressVal + "% completed" );
@@ -162,13 +169,11 @@ function initMap(latVal, lngVal, response) {
                         }
                     }); 
 
+                    console.log('done loading')
 
                     $("#loading-box").hide();
-                    
                     $("#slider").slider("enable");
-                    
                     $("#slider-div").show();
-                    console.log('done loading')
                     $("#playButton").visible();
                     $("#playButton").html("&#9658");
                     $("#playButton").css("background-color", "#009aff");
@@ -428,6 +433,11 @@ function initMap(latVal, lngVal, response) {
     /*****/
 
     function handleDefaultFile(){
+        $("#upload-header").html('File loading...');
+        $('#or').hide()
+        $('#instructions').hide()
+        $('#sample').hide()
+        $('#upload-wrapper-content').hide()
         $.getJSON( "history.json", function( data ) {
                 days = parseLocationJson(data);
                 //console.log(data);
@@ -938,8 +948,12 @@ function initMap(latVal, lngVal, response) {
                 manipulateImage(image, millis, lat, lon, callback);
             };
             var hi = getGRouteResponse();
+
+            console.log('getGRouteResponse')
             //how to use promise to do this?
             hi.done(function(){createHyperlapse($img.nextAll(".hyperlapse")[0])});
+
+            console.log('getGRouteResponse2')
             //hi.then(createHyperlapse($img.nextAll(".hyperlapse")[0]))
 
         });
