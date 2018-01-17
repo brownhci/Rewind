@@ -172,6 +172,7 @@ function initMap(latVal, lngVal, response) {
                     console.log('done loading')
 
                     $("#loading-box").hide();
+                    $("#datepicker").attr("disabled", false);
                     $("#slider").slider("enable");
                     $("#slider-div").show();
                     $("#playButton").visible();
@@ -501,6 +502,8 @@ function initMap(latVal, lngVal, response) {
              //   globPlayer = null;
                 $( "#slider" ).slider( "disable" );
                 $( "#slider" ).slider( "value", 0 );
+
+
 
             }
         });
@@ -928,6 +931,8 @@ function initMap(latVal, lngVal, response) {
 
         $(".play-icon").click(function() {
             console.log('play icon hit')
+
+            $("#datepicker").attr("disabled", true);
 
             $("#loading-box").html("Loading Rewind...");
             $("#loading-box").visible();

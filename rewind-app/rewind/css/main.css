@@ -490,6 +490,10 @@ input#fileInput {
     cursor: pointer;
 }
 
+#datepicker:disabled{
+	background: #adadad;
+}
+
 .missing{
 	opacity: 0.3;
 }
