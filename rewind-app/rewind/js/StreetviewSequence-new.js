@@ -75,7 +75,7 @@
             streetViewService = new google.maps.StreetViewService();
             totalRouteNo = options.route.length;
             totalDuration = totalRouteNo * options.totalFrames * 0.1;
-            options.totalFrames = parseInt(50 / totalRouteNo);
+            options.totalFrames = parseInt(700 / totalRouteNo);
 
             canvas.height = options.height;
             canvas.width = options.width;
