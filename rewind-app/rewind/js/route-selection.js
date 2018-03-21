@@ -23,6 +23,7 @@ function pullRoutesfromLocs(period, num_routes){
     //return an empty routes
     if (period.length < 4){
         return routes
+        console.log("less than 4 data points")
     }
 
     var prev = 0, cur = 1;
@@ -40,10 +41,21 @@ function pullRoutesfromLocs(period, num_routes){
         var dist = haversineDist(prevLat, prevLon, curLat, curLon);
         var v = getVelocity(dist, prevTime, curTime);
 
-        if (v < 1.5){
+        if (v < 0.5){
+            console.log('speed less than 1.5')
             //check if previous speed is also extremely slow, if it is
             //the criteria here needs to be more stringent
             if (tmp.length > 0){
+
+
+                if (tmp.length == 1) {
+                    if (cur == period.length-1) {
+                        console.log('end reached')
+                        point = makePoint(prevLat, prevLon, prevTime, v, dist)
+                        tmp.push(point);
+                        routes.push(tmp);
+                    }
+                }
                 //if the previous speed is also very slow
                 //point belongs to a static cluster
                 //console.log(tmp[tmp.length - 1]);
@@ -62,28 +74,46 @@ function pullRoutesfromLocs(period, num_routes){
                     //tmp = [];
                 }
             //if it is the first point with speed < 1.5, store it
-            }else{
+            }
+
+            else{
                 point = makePoint(prevLat, prevLon, prevTime, v, dist);
+                console.log(point)
                 tmp.push(point);
+                console.log(tmp)
             }
 
         //if v > 1.5 -> in motion
-        }else {
+        }
+
+
+
+        else {
+            console.log('v > 0.5')
 
             if (tmp.length > 0){
-                if (tmp[tmp.length - 1].velocity < 1.5){
+                if (tmp[tmp.length - 1].velocity < 0.5){
                     lastElement = tmp[tmp.length - 1];
                     tmp = [];
                     tmp.push(lastElement);
+                    console.log('last element pushed:')
+                    console.log(lastElement)
                 }
             }
                 point = makePoint(prevLat, prevLon, prevTime, v, dist);
+                console.log(point)
                 tmp.push(point);
+                console.log(tmp)
+                console.log('check 4')
         }
 
         
         cur ++;
         prev ++;
+    }
+    console.log(routes);
+    if (routes.length==0) {
+        routes.push(tmp);
     }
     console.log(routes);
     return routes;

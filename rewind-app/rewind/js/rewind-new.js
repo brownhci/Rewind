@@ -777,6 +777,11 @@ function initMap(latVal, lngVal, response) {
         console.log('startRewind')
         initializeEvents();
         period = getCurrPeriod($("input[name='length']:checked").attr("value"), start_date)
+
+        console.log("start date:" + start_date)
+        console.log("period:")
+        console.log(period)
+        console.log(period.length)
         processPeriod(period, "next")
     }
 
@@ -889,8 +894,8 @@ function initMap(latVal, lngVal, response) {
         //});
 
         var $resDiv = $("#question-list");
-        questionsHtml = "<canvas id='rainLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
-        + "<canvas id='snowLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='margin-top: -55px; position: absolute;z-index:100; display: none'></canvas>"
+        questionsHtml = "<canvas id='rainLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='position: absolute;z-index:100'></canvas>"
+        + "<canvas id='snowLayer' width='" + panosize.toString() + "' height='" + panosize.toString() + "' style='position: absolute;z-index:100'></canvas>"
         + "<img class='play-icon' src='img/play.png' style='position:absolute; top:0px; left:0px; width:100px; margin:40% 40%;'>"
         + questionsHtml;
         $resDiv.html(questionsHtml);
