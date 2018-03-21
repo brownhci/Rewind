@@ -41,7 +41,7 @@ function pullRoutesfromLocs(period, num_routes){
         var dist = haversineDist(prevLat, prevLon, curLat, curLon);
         var v = getVelocity(dist, prevTime, curTime);
 
-        if (v < 0.5){
+        if (v < 0.1){
             console.log('speed less than 1.5')
             //check if previous speed is also extremely slow, if it is
             //the criteria here needs to be more stringent
@@ -92,7 +92,7 @@ function pullRoutesfromLocs(period, num_routes){
             console.log('v > 0.5')
 
             if (tmp.length > 0){
-                if (tmp[tmp.length - 1].velocity < 0.5){
+                if (tmp[tmp.length - 1].velocity < 0.1){
                     lastElement = tmp[tmp.length - 1];
                     tmp = [];
                     tmp.push(lastElement);
