@@ -1,9 +1,0 @@
-pdflatex paper.tex
-bibtex paper
-pdflatex paper.tex
-pdflatex paper.tex
-del paper.log
-del paper.out
-del paper.blg
-del paper.bbl
-del paper.aux
