@@ -1,8 +1,5 @@
 # Rewind
 
-rewind.cs.brown.edu
-
-
 ## Install and Run locally
 
 If you'd like to see weather effects on Rewind, click [here](#with-weather-effects). Otherwise click [here](#without-weather-effects).
